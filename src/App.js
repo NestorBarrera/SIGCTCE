@@ -1,17 +1,19 @@
-import React from 'react';
+
+import React, { Component } from 'react';
 import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Login from './views/Login';
-
-function App() {
+import Router from './Router';
+class App extends Component {
+  render(){
   return (
     <div>
       <Header/>
-      <Login/>
+      <Router/>
       <Footer/>
     </div>
   );
+  }
 }
 
 export default App;
