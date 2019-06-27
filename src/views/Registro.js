@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
-import {municipios,hidalgo} from '../components/data/data';
+import {municipios,hidalgo} from '../data/data';
 
-
-class RegistroCursos extends Component{
+class Registro extends Component{
 
     constructor(props) {
         super(props);
@@ -34,7 +33,7 @@ class RegistroCursos extends Component{
             var newZips = [];
             hidalgo.map((item,index) => {
                 if(item.nombre === value){
-                    zips.push(item.cp); 
+                    zips.push(item.cp);
                 }
             })
             newZips = zips.filter(function(item, index, array) {
@@ -86,6 +85,7 @@ class RegistroCursos extends Component{
             
     }
 
+
     render(){
         return(
             <section className="container">
@@ -93,47 +93,21 @@ class RegistroCursos extends Component{
                     <div className="container-login100">
                         <div className="row wrap-login100">
                             <div className="login100-form-title">
-                                <span className="login100-form-title-1">Registra tú curso o taller</span>
+                                <span className="login100-form-title-1">Registrate</span>
                             </div>
 
-                            <div className="text-center w-100" style={{paddingTop:"15px"}}>
-                                <img className="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
+                            <div className="text-center  w-100" style={{paddingTop:"15px"}}>
+                                <img className="rounded hidalgo" src="Image/Logo.png" alt="IHJ Logo"/>
                             </div>
 
                             <form className="needs-validation login100-form" noValidate>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="nombre-curso">Nombre del curso: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="nombre-curso" name="nombre-curso" required
-                                        placeholder="Nombre aqui ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa el nombre del curso
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="descri">Descripción: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="descri" name="descri" required
-                                        placeholder="Descripción del curso"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la descripción del curso
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="nombre">Nombre(s): </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="nombre" name="nombre" required
-                                        placeholder="Nombre del ponente"
+                                        id="name" name="nombre" required
+                                        placeholder="Tu nombre aqui ..."
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
@@ -145,8 +119,8 @@ class RegistroCursos extends Component{
                                     <label htmlFor="app">Apellido Paterno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="app" name="app" required
-                                        placeholder="Apellido del ponente"
+                                        id="ApPa" name="app" required
+                                        placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
@@ -158,8 +132,8 @@ class RegistroCursos extends Component{
                                     <label htmlFor="apm">Apellido Materno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="apm" name="apm" required
-                                        placeholder="Apellido del ponente"
+                                        id="ApMa" name="apm" required
+                                        placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
@@ -168,11 +142,36 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="edad">Edad: </label>
+                                    <input 
+                                        type="number" className="form-control" 
+                                        id="Edad" name="edad" required
+                                        placeholder="Tu edad aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu edad
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="sexo">Sexo: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona tu sexo</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona tu sexo</div>
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="telefono">Telefono: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="telefono" name="telefono" required
-                                        placeholder="Tu telefono ponente"
+                                        id="Telefono" name="telefono" required
+                                        placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
@@ -181,53 +180,67 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="sexo">Sexo: </label>
-                                    
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona tu sexo</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
+                                    <label htmlFor="municipio">Municipio: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="Municipio" name="municipio" onChange={this.handleInputChange} required>
+                                            <option value="">Selecciona un municipio</option>
+                                            {municipios.map((item,index) => {
+                                                return(<option value={item.name} key={index}>{item.name}</option>);
+                                            })}
                                         </select>
-                                        <div className="invalid-feedback">Selecciona tu sexo</div>
-                                    
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="time">Horario: </label>
-                                    <input 
-                                        type="time" className="form-control" 
-                                        id="time" name="time" required
-                                        placeholder="Ingresa horario"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa el horario
+                                        <div className="invalid-feedback">Selecciona un municipio</div>
                                     </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="date">Fecha de inicio: </label>
-                                    <input 
-                                        type="date" className="form-control" 
-                                        id="date" name="date" required
-                                        placeholder="Ingresa la fecha ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la fecha de inicio
+                                    <label htmlFor="cp">Codigo Postal: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="cp" name="cp" onChange={this.handleInputChange} required>
+                                            <option value="">Selecciona un municipio</option>
+                                            {this.state.zips.map((item,index) => {
+                                                return(<option value={item} key={index}>{item}</option>);
+                                            })}
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona un codigo postal</div>
                                     </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="date">Fecha de terminación: </label>
+                                    <label htmlFor="colonia">Colonia: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="Colonia" name="colonia" onChange={this.handleInputChange} required>
+                                            <option value="">Selecciona una colonia</option>
+                                            {this.state.colonias.map((item,index) => {
+                                                return(<option value={item} key={index}>{item}</option>);
+                                            })}
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona un colonia</div>
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="calle">Calle: </label>
                                     <input 
-                                        type="date" className="form-control" 
-                                        id="date" name="date" required
-                                        placeholder="Ingresa la fecha ..."
+                                        type="text" className="form-control" 
+                                        id="calle" name="calle" required
+                                        placeholder="Tu calle aqui ..."
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
-                                        Por favor ingresa la fecha de fin
+                                        Por favor ingresa tu calle
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="numExt">Número Exterior: </label>
+                                    <input 
+                                        type="number" className="form-control" 
+                                        id="numExt" name="numExt" required
+                                        placeholder="Tu numero aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu número
                                     </div>
                                 </div>
 
@@ -245,8 +258,21 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="password">Contraseña: </label>
+                                    <input 
+                                        type="password" className="form-control" 
+                                        id="password" name="password" required
+                                        placeholder="Tu contraseña aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu contraseña
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
-                                    
+                                    <div className="form-group">
                                         <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
@@ -254,60 +280,35 @@ class RegistroCursos extends Component{
                                         <option value="Emprendedores">Emprendedores</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un area</div>
-                                    
+                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="level">Nivel: </label>
-                                    
+                                    <div className="form-group">
                                         <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un nivel</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Coordinador">Coordinador</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un nivel</div>
-                                    
+                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
-                                    
+                                    <div className="form-group">
                                         <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un estatus</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un estatus</div>
-                                    
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="active">Tipo: </label>
-                                    
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona</option>
-                                        <option value={true}>Curso</option>
-                                        <option value={false}>Taller</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona</div>
-                                    
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="capacity">Capacidad de personas: </label>
-                                    <input 
-                                        type="number" className="form-control" 
-                                        id="capacity" name="capacity" required
-                                        placeholder="Ingresa la capacidad ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la capacidad de personas
                                     </div>
                                 </div>
 
                                 <div className="col-12 mt-3">
-                                    <button type="submit" className="btn btn-success login100-form-btn">
+                                    <button type="submit" className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
                                         Registrar
                                     </button>
                                 </div>
@@ -320,6 +321,4 @@ class RegistroCursos extends Component{
     }
 }
 
-
-
-export default RegistroCursos;
+export default Registro;

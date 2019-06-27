@@ -179,56 +179,6 @@ class RegistroBeneficiarios extends Component{
                                     </div>
                                 </div>
 
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="password">Contraseña: </label>
-                                    <input 
-                                        type="password" className="form-control" 
-                                        id="password" name="password" required
-                                        placeholder="Tu contraseña aqui ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu contraseña
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="area">Area: </label>
-                                    <div className="form-group">
-                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona una area</option>
-                                        <option value="Salud Juvenil">Salud Juvenil</option>
-                                        <option value="Poder Joven">Poder Joven</option>
-                                        <option value="Emprendedores">Emprendedores</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona un area</div>
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="level">Nivel: </label>
-                                    <div className="form-group">
-                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un nivel</option>
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Coordinador">Coordinador</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona un nivel</div>
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="active">Activo: </label>
-                                    <div className="form-group">
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un estatus</option>
-                                        <option value={true}>SI</option>
-                                        <option value={false}>NO</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona un estatus</div>
-                                    </div>
-                                </div>
-
                                 <div className="col-12 mt-3">
                                     <button type="submit" className="btn btn-success login100-form-btn">
                                         Registrar
