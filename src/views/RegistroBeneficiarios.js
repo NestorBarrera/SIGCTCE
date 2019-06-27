@@ -142,14 +142,53 @@ class RegistroBeneficiarios extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="date">Fecha de nacimiento: </label>
+                                    <input 
+                                        type="date" className="form-control" 
+                                        id="date" name="date" required
+                                        placeholder="Tu fecha aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu fecha de naciemento
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="number">Edad: </label>
+                                    <input 
+                                        type="number" className="form-control" 
+                                        id="number" name="number" required
+                                        placeholder="Tu edad aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu edad
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                    <div className="form-group">
+                                    
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona tu sexo</div>
+                                    
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="text">CURP: </label>
+                                    <input 
+                                        type="text" className="form-control" 
+                                        id="text" name="text" required
+                                        placeholder="Tu email aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu CURP
                                     </div>
                                 </div>
 
