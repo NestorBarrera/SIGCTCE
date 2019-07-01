@@ -5,10 +5,9 @@ import RegistroCursos from './views/RegistroCursos';
 import Cursos from './views/Cursos';
 import RegistroBeneficiarios from './views/RegistroBeneficiarios';
 import Beneficiarios from './views/Beneficiarios';
-import ListUser from './views/ListUser';
 import Principal from './views/Principal';
-import NumBene from './views/NumBene';
 import Registro from './views/Registro';
+import User from './views/User';
 
 class Router extends Component{
     render(){
@@ -19,9 +18,8 @@ class Router extends Component{
                 <Route path="/registrocursos" component={RegistroCursos}/>
                 <Route path="/registrobeneficiarios" component={RegistroBeneficiarios}/>
                 <Route path="/beneficiarios" component={Beneficiarios}/>
-                <Route path="/listuser" component={ListUser}/>
+                <Route path="/user" component={User}/>
                 <Route path="/principal" component={Principal}/>
-                <Route path="/numbene" component={NumBene}/>
                 <Route path="/registro" component={Registro}/>
                 
             </Switch>

@@ -11,7 +11,6 @@ class Principal extends Component {
                         <li><a href="#">Talleres</a></li>
                         <li><a href="#">Cursos</a></li>
                         <li><a href="#">Usuarios</a></li>
-                        <li><a href="#">Beneficiarios</a></li>
                     </ul>
                 </nav>
             </div> 
@@ -26,14 +25,18 @@ class Principal extends Component {
                 <hr class="red small-margin"/><br/><br/><br/>
 
             <div className="row justify-content-center">
-                <div className="col-12 col-md-7">
+                <div className="">
                 <table className="table table-hover">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col"> Fecha</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Ponente</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Termino</th>
+                    <th scope="col">Área</th>
+                    <th scope="col">Capacidad</th>
                     <th scope="col">Ver</th>
                     <th scope="col">Modificar</th>
                     <th scope="col">Eliminar</th>
@@ -42,49 +45,13 @@ class Principal extends Component {
                 <tbody>
                     <tr>
                     <th scope="row">1</th>
-                    <td>04-06-2019</td>
                     <td>Taller de Fotografia digital Nivel Basico</td>
+                    <td>Necesario acudir con Camara Fotografica</td>
                     <td>Rodrigo</td>
-                    <td>
-                    <a href="#" class="badge badge-primary icon-eye">Ver</a>
-                    </td>
-                    <td>
-                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-                   
-                </tbody>
-                </table>
-                </div>
-
-            </div>
-
-            <hr class="red small-margin"/><br/><br/><br/>
-
-
-            <div className="row justify-content-center">
-                <div className="col-12 col-md-7">
-                <table className="table table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Ponente</th>
-                    <th scope="col">Ver</th>
-                    <th scope="col">Modificar</th>
-                    <th scope="col">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">2</th>
+                    <td>04-06-2019</td>
                     <td>12-06-2019</td>
-                    <td>Taller de Producción de Video</td>
-                    <td>Elizabeth</td>
+                    <td>Poder Joven</td>
+                    <td>29</td>
                     <td>
                     <a href="#" class="badge badge-primary icon-eye">Ver</a>
                     </td>
@@ -101,46 +68,9 @@ class Principal extends Component {
                 </div>
 
             </div>
+
             <hr class="red small-margin"/><br/><br/><br/>
 
-<div className="row justify-content-center">
-    <div className="col-12 col-md-7">
-    <table className="table table-hover">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Fecha </th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Ponente</th>
-        <th scope="col">Ver</th>
-        <th scope="col">Modificar</th>
-        <th scope="col">Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">3</th>
-        <td>17-06-2019</td>
-        <td>Taller de Cómic y Narrativa Gráfica nivel básico</td>
-        <td>Elizabeth</td>
-        <td>
-        <a href="#" class="badge badge-primary icon-eye">Ver</a>
-        </td>
-        <td>
-        <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
-        </td>
-        <td>
-        <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
-        </td>
-        </tr>
-       
-    </tbody>
-    </table>
-    </div>
-
-</div>
-
-            
     </div>
 
         );
