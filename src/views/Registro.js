@@ -119,7 +119,7 @@ class Registro extends Component{
                                     <label htmlFor="app">Apellido Paterno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="ApPa" name="app" required
+                                        id="app" name="app" required
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -132,7 +132,7 @@ class Registro extends Component{
                                     <label htmlFor="apm">Apellido Materno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="ApMa" name="apm" required
+                                        id="apm" name="apm" required
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -145,7 +145,7 @@ class Registro extends Component{
                                     <label htmlFor="edad">Edad: </label>
                                     <input 
                                         type="number" className="form-control" 
-                                        id="Edad" name="edad" required
+                                        id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -170,7 +170,7 @@ class Registro extends Component{
                                     <label htmlFor="telefono">Telefono: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="Telefono" name="telefono" required
+                                        id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
                                     />

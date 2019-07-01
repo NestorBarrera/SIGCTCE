@@ -103,10 +103,10 @@ class RegistroCursos extends Component{
                             <form className="needs-validation login100-form" noValidate>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="nombre-curso">Nombre del curso: </label>
+                                    <label htmlFor="nombrecurso">Nombre del curso: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="nombre-curso" name="nombre-curso" required
+                                        id="nombrecurso" name="nombrecurso" required
                                         placeholder="Nombre aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -129,54 +129,15 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="nombre">Nombre(s): </label>
+                                    <label htmlFor="ponente">Ponente: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="nombre" name="nombre" required
+                                        id="ponente" name="ponente" required
                                         placeholder="Nombre del ponente"
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu nombre
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="app">Apellido Paterno: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="app" name="app" required
-                                        placeholder="Apellido del ponente"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="apm">Apellido Materno: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="apm" name="apm" required
-                                        placeholder="Apellido del ponente"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="telefono">Telefono: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="telefono" name="telefono" required
-                                        placeholder="Tu telefono ponente"
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu telefono
                                     </div>
                                 </div>
 
@@ -231,18 +192,7 @@ class RegistroCursos extends Component{
                                     </div>
                                 </div>
 
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="email">Email: </label>
-                                    <input 
-                                        type="email" className="form-control" 
-                                        id="email" name="email" required
-                                        placeholder="Tu email aqui ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu email
-                                    </div>
-                                </div>
+                                
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
@@ -257,29 +207,9 @@ class RegistroCursos extends Component{
                                     
                                 </div>
 
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="level">Nivel: </label>
-                                    
-                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un nivel</option>
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Coordinador">Coordinador</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona un nivel</div>
-                                    
-                                </div>
+                               
 
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="active">Activo: </label>
-                                    
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un estatus</option>
-                                        <option value={true}>SI</option>
-                                        <option value={false}>NO</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona un estatus</div>
-                                    
-                                </div>
+                                
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Tipo: </label>

@@ -8,6 +8,7 @@ import Beneficiarios from './views/Beneficiarios';
 import ListUser from './views/ListUser';
 import Principal from './views/Principal';
 import NumBene from './views/NumBene';
+import Registro from './views/Registro';
 
 class Router extends Component{
     render(){
@@ -21,6 +22,7 @@ class Router extends Component{
                 <Route path="/listuser" component={ListUser}/>
                 <Route path="/principal" component={Principal}/>
                 <Route path="/numbene" component={NumBene}/>
+                <Route path="/registro" component={Registro}/>
                 
             </Switch>
         );
