@@ -1,6 +1,38 @@
 import React, {Component} from 'react';
+import { connect} from 'react-redux';
+import {GET_BENE_ACTION} from '../redux/actions/BeneAction';
+
+
 class Beneficiarios extends Component {
+    componentDidMount(){
+        this.props.getBene()
+    }
+
+    _renderItem = () =>{
+        return this.props.stateBene.map((row,index)=>{
+            return(
+                <tr key={index}>
+                    <td>{row.nombre}</td>
+                    <td>{row.app} {row.apm}</td>
+                    <td>{row.fecha}</td>
+                    <td>{row.edad}</td>
+                    <td> {row.curp} </td>
+                    <td> {row.tel} </td>
+                    <td> {row.email} </td>
+                    <td>
+                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
+                    </td>
+                    <td>
+                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
+                    </td>
+                     
+                </tr>
+            );
+        })
+    }
+
     render() {
+    console.log(this.props.stateBene);
         return (
 
 <div className="container" style={{marginTop:30}}>
@@ -10,7 +42,7 @@ class Beneficiarios extends Component {
             <a href="Principal" className="icon-circle-left" style={{fontSize:"25px"}}>Regresar </a>
         </div>
     </div>
-    <div class="col-4">
+    <div className="col-4">
             <a href="#" className="icon-users" style={{fontSize:"25px"}}> 2</a>
         </div>
 
@@ -21,7 +53,6 @@ class Beneficiarios extends Component {
                 <table className="table table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">NO.</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Fecha de Nacimiento</th>
@@ -34,46 +65,14 @@ class Beneficiarios extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Manuel</td>
-                    <td>Carrasco Martinez</td>
-                    <td>12/10/1998</td>
-                    <td>21</td>
-                    <td>CAMJ900421HCHRRN05</td>
-                    <td>5578498315</td>
-                    <td>Carras42@gmail.com</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
+                    {this._renderItem()}
                 </tbody>
-                <tbody>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Perla</td>
-                    <td>Arias Hernandéz</td>
-                    <td>27/07/1997</td>
-                    <td>22</td>
-                    <td>AIHP911101MCHRRR03</td>
-                    <td>5578498315</td>
-                    <td>Perlita@gmail.com</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-                </tbody>
+               
                 </table>
                 </div>
 
             </div>
-            <a href=""> <span class="badge badge-pill badge-success icon-download" style={{fontSize:"18px"}}>PDF</span> </a>
+            <a href=""> <span className="badge badge-pill badge-success icon-download" style={{fontSize:"18px"}}>PDF</span> </a>
   
             
     </div>
@@ -81,4 +80,16 @@ class Beneficiarios extends Component {
         );
      }
     }
-    export default Beneficiarios;
+    const mapStateToProps =({stateBene})=>{
+        return{
+            stateBene: stateBene,
+        };
+    }
+    
+    const mapDispatchToProps=(dispatch)=>{
+        return{
+            getBene: ()=>dispatch(GET_BENE_ACTION())
+        };
+    };
+    const ConnectBene= connect(mapStateToProps,mapDispatchToProps)(Beneficiarios);
+    export default ConnectBene;

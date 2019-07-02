@@ -1,6 +1,35 @@
 import React, {Component} from 'react';
+import { connect} from 'react-redux';
+import {GET_USER_ACTION} from '../redux/actions/UsersAction';
+
 class User extends Component {
+    componentDidMount(){
+        this.props.getUsers()
+    }
+    _renderItem = () =>{
+        return this.props.stateUsers.map((row,index)=>{
+            return(
+                <tr key={index}>
+                    <td>{row.name}</td>
+                    <td>{row.app} {row.apm}</td>
+                    <td>{row.email}</td>
+                    <td>{row.password}</td> 
+                    <td>{row.area}</td>
+                    <td>{row.level}</td>
+                    <td>
+                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
+                    </td>
+                    <td>
+                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
+                    </td>
+                     
+                </tr>
+            );
+        })
+    }
+
     render() {
+        console.log(this.props.stateUsers);
         return (
 
 <div className="container" style={{marginTop:30}}>
@@ -30,7 +59,6 @@ class User extends Component {
                 <table className="table table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">NO.</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Email</th>
@@ -42,71 +70,7 @@ class User extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Alejandra</td>
-                    <td>García Fernández</td>
-                    <td>Fer@gmail.com</td>
-                    <td>Gar8976</td>
-                    <td>Poder Joven</td>
-                    <td>Coordinador</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Fernando</td>
-                    <td>Pérez Gutiérrez</td>
-                    <td>Fer89@gmail.com</td>
-                    <td>Gat894566</td>
-                    <td>Poder Juvenil</td>
-                    <td>Coordinador</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Beatriz</td>
-                    <td>García García</td>
-                    <td>Garcia@gmail.com</td>
-                    <td>Beati9438</td>
-                    <td>Emprendedores</td>
-                    <td>Administrador</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>                    
-
-
-                    <tr>
-                    <th scope="row">4</th>
-                    <td>Guillermo</td>
-                    <td>García González</td>
-                    <td>Guiller@gmail.com</td>
-                    <td>Garci7812</td>
-                    <td>Emprendedores</td>
-                    <td>Administrador</td>
-                    <td>
-                    <a href="#" className="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" className="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-                   
+                   {this._renderItem()}
                 </tbody>
                 </table>
                 </div>
@@ -120,4 +84,16 @@ class User extends Component {
         );
      }
     }
-    export default User;
+    const mapStateToProps =({stateUsers})=>{
+        return{
+            stateUsers: stateUsers,
+        };
+    }
+    
+    const mapDispatchToProps=(dispatch)=>{
+        return{
+            getUsers: ()=>dispatch(GET_USER_ACTION())
+        };
+    };
+    const ConnectUsers= connect(mapStateToProps,mapDispatchToProps)(User);
+    export default ConnectUsers;

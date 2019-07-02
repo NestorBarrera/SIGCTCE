@@ -2,21 +2,21 @@ import axios from 'axios';
 
 const BASE_URL= "http://" +window.location.hostname + ":8110";
 
-const GET_USER_ACTION = () =>{
+const GET_BENE_ACTION = () =>{
     return{
-        type: "GET_USERS",
-        payload: axios.get(BASE_URL + '/getUsers')
+        type: "GET_BENE",
+        payload: axios.get(BASE_URL + '/getBenefi')
     };
 }
 
-const NEW_USER_ACTION =(name,app,apm,edad,sexo,tel,email,passwd,area,level,active) =>{
+const NEW_BENE_ACTION =(nombre,app,apm,fecha,edad,sexo,curp,tel,email) =>{
     return{
-        type: "NEW_USER",
+        type: "NEW_BENE",
         payload: axios({
             method: 'post',
-            url: BASE_URL + '/user/signup',
+            url: BASE_URL + '/beneficiario/signup',
             data:{
-                name,app,apm,edad,sexo,tel,email,passwd,area,level,active
+                nombre,app,apm,fecha,edad,sexo,curp,tel,email
             },
             config: {
                 headers:{
@@ -29,6 +29,6 @@ const NEW_USER_ACTION =(name,app,apm,edad,sexo,tel,email,passwd,area,level,activ
 
 
 export {
-    GET_USER_ACTION,
-    NEW_USER_ACTION
+    GET_BENE_ACTION,
+    NEW_BENE_ACTION
 };

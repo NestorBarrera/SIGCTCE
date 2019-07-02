@@ -1,6 +1,40 @@
 import React, {Component} from 'react';
+import { connect} from 'react-redux';
+import {GET_CURSOS_ACTION} from '../redux/actions/CursosAction';
+
 class Principal extends Component {
+    componentDidMount(){
+        this.props.getCursos()
+    }
+
+    _renderItem = () =>{
+        return this.props.stateCursos.map((row,index)=>{
+            return(
+                <tr key={index}>
+                    <td>{row.nombrecurso}</td>
+                    <td>{row.descri}</td>
+                    <td>{row.ponente}</td>
+                    <td>{row.datein}</td>
+                    <td>{row.datefi}</td>
+                    <td> {row.area} </td>
+                    <td> {row.capacity} </td>
+                    <td>
+                        <a href="#" className="badge badge-primary icon-eye">Ver</a>
+                    </td>
+                    <td>
+                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
+                    </td>
+                    <td>
+                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
+                    </td>
+                     
+                </tr>
+            );
+        })
+    }
+
     render() {
+        console.log(this.props.stateCursos);
         return (
 
 <div className="container" style={{marginTop:30}}>
@@ -29,7 +63,6 @@ class Principal extends Component {
                 <table className="table table-hover">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Ponente</th>
@@ -43,26 +76,7 @@ class Principal extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Taller de Fotografia digital Nivel Basico</td>
-                    <td>Necesario acudir con Camara Fotografica</td>
-                    <td>Rodrigo</td>
-                    <td>04-06-2019</td>
-                    <td>12-06-2019</td>
-                    <td>Poder Joven</td>
-                    <td>29</td>
-                    <td>
-                    <a href="#" class="badge badge-primary icon-eye">Ver</a>
-                    </td>
-                    <td>
-                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
-                    </td>
-                    <td>
-                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
-                    </td>
-                    </tr>
-                   
+                {this._renderItem()}
                 </tbody>
                 </table>
                 </div>
@@ -76,4 +90,16 @@ class Principal extends Component {
         );
      }
     }
-    export default Principal;
+    const mapStateToProps =({stateCursos})=>{
+        return{
+            stateCursos: stateCursos,
+        };
+    }
+    
+    const mapDispatchToProps=(dispatch)=>{
+        return{
+            getCursos: ()=>dispatch(GET_CURSOS_ACTION())
+        };
+    };
+    const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(Principal);
+    export default ConnectCursos;
