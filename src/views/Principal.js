@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSOS_ACTION, DELETE_CURSOS_ACTION} from '../redux/actions/CursosAction';
 
 class Principal extends Component {
     componentDidMount(){
         this.props.getCursos()
     }
+
+    componentWillReceiveProps(nextProps){
+        const NewProps = nextProps;
+            if(NewProps.responseDeleteCursos.success === "OK"){
+                this.props.getCursos();
+            }
+    }    
 
     _renderItem = () =>{
         return this.props.stateCursos.map((row,index)=>{
@@ -22,10 +29,10 @@ class Principal extends Component {
                         <a href="#" className="badge badge-primary icon-eye">Ver</a>
                     </td>
                     <td>
-                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
+                    <button className="btn btn-warning">Modificar</button>
                     </td>
                     <td>
-                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
                     </td>
                      
                 </tr>
@@ -90,15 +97,17 @@ class Principal extends Component {
         );
      }
     }
-    const mapStateToProps =({stateCursos})=>{
+    const mapStateToProps =({stateCursos,responseDeleteCursos})=>{
         return{
             stateCursos: stateCursos,
+            responseDeleteCursos: responseDeleteCursos,
         };
     }
     
     const mapDispatchToProps=(dispatch)=>{
         return{
-            getCursos: ()=>dispatch(GET_CURSOS_ACTION())
+            getCursos: ()=>dispatch(GET_CURSOS_ACTION()),
+            deleteCursos:(id)=>dispatch(DELETE_CURSOS_ACTION(id))
         };
     };
     const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(Principal);

@@ -16,7 +16,17 @@ const NEW_BENE_REDUCER = (state = {}, action) =>{
     }
 };
 
+const DELETE_BENE_REDUCER = (state = {}, action) =>{
+    switch(action.type){
+        case "DELETE_BENE_PENDING": return {status: "Pending"};
+        case "DELETE_BENE_FULFILLED": return action.payload.data;
+        case "DELETE_BENE_REJECTED": return {status : "Error"};
+        default: return state;
+    }
+};
+
 export {
     NEW_BENE_REDUCER,
-    GET_BENE_REDUCER
+    GET_BENE_REDUCER,
+    DELETE_BENE_REDUCER
 };

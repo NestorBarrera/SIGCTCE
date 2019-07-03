@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_BENE_ACTION} from '../redux/actions/BeneAction';
+import {GET_BENE_ACTION, DELETE_BENE_ACTION} from '../redux/actions/BeneAction';
 
 
 class Beneficiarios extends Component {
     componentDidMount(){
         this.props.getBene()
+    }
+
+    componentWillReceiveProps(nextProps){
+        const NewProps = nextProps;
+        if(NewProps.responseDeleteBene.success === "OK"){
+            this.props.getBene();
+        }
     }
 
     _renderItem = () =>{
@@ -20,10 +27,10 @@ class Beneficiarios extends Component {
                     <td> {row.tel} </td>
                     <td> {row.email} </td>
                     <td>
-                    <a href="#" class="badge badge-warning icon-pencil">Modificar</a>
+                    <button className="btn btn-warning">Modificar</button>
                     </td>
                     <td>
-                    <a href="#" class="badge badge-danger icon-bin">Eliminar</a>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
                     </td>
                      
                 </tr>
@@ -80,15 +87,17 @@ class Beneficiarios extends Component {
         );
      }
     }
-    const mapStateToProps =({stateBene})=>{
+    const mapStateToProps =({stateBene, responseDeleteBene})=>{
         return{
             stateBene: stateBene,
+            responseDeleteBene: responseDeleteBene,
         };
     }
     
     const mapDispatchToProps=(dispatch)=>{
         return{
-            getBene: ()=>dispatch(GET_BENE_ACTION())
+            getBene: ()=>dispatch(GET_BENE_ACTION()),
+            deleteBene:(id)=>dispatch(DELETE_BENE_ACTION(id))
         };
     };
     const ConnectBene= connect(mapStateToProps,mapDispatchToProps)(Beneficiarios);

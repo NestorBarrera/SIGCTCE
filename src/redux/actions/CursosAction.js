@@ -26,9 +26,16 @@ const NEW_CURSOS_ACTION =(nombrecurso,descri,ponente,sexo,time,datein,datefi,are
         })
     };
 }
+const DELETE_CURSOS_ACTION =(id) =>{
+    return{
+        type: "DELETE_CURSOS",
+        payload: axios.get(BASE_URL + '/cursos/delete' + id)
+    };
+} 
 
 
 export {
     GET_CURSOS_ACTION,
-    NEW_CURSOS_ACTION
+    NEW_CURSOS_ACTION,
+    DELETE_CURSOS_ACTION
 };
