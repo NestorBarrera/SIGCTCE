@@ -29,7 +29,7 @@ class User extends Component {
                     <button className="btn btn-warning icon-pencil">Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteUser.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger" onClick={this.props.deleteUser.bind(this,row._id)}>Eliminar</button>
                     </td>  
                 </tr>
             );
@@ -55,7 +55,7 @@ class User extends Component {
                 </div>
     
                 <div  style={{textAlign:"right"}}>
-                    <a href="#" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
+                    <a href="Modificar" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
                 </div>
       
                 <hr className="red small-margin"/><br/><br/><br/>

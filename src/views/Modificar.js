@@ -1,9 +1,8 @@
 import React,{Component} from 'react';
-import {NEW_BENE_ACTION} from '../redux/actions/BeneAction';
+import {NEW_USER_ACTION} from '../redux/actions/UsersAction';
 import {connect} from 'react-redux';
 
-
-class RegistroBeneficiarios extends Component{
+class Modificar extends Component{
 
     constructor(props) {
         super(props);
@@ -19,7 +18,7 @@ class RegistroBeneficiarios extends Component{
         const NewProps = nextProps;
 
         if(NewProps.responseNewUser.success === "OK"){
-            window.location.href = "/Beneficiarios";
+            window.location.href = "/User";
         }
     }
     
@@ -33,40 +32,44 @@ class RegistroBeneficiarios extends Component{
     }
 
     handleSubmit() {
-        if(this.state.nombre ===undefined ||
+        if(this.state.name ===undefined || 
             this.state.app ===undefined ||
             this.state.apm ===undefined ||
-            this.state.date ===undefined ||
             this.state.edad ===undefined ||
             this.state.sexo ===undefined ||
-            this.state.curp ===undefined ||
             this.state.tel ===undefined ||
-            this.state.email ===undefined
+            this.state.email ===undefined ||
+            this.state.password ===undefined ||
+            this.state.area ===undefined ||
+            this.state.level ===undefined ||
+            this.state.active ===undefined
             ){
                 this.setState({
                     showAlert: true
                 });
-        }else{ 
-            console.log(this.state);
-            
-            this.props.addBene(
-                this.state.nombre,
+        }else { 
+        console.log(this.state);
+        
+            this.props.addUsers(
+                this.state.name,
                 this.state.app,
                 this.state.apm,
-                this.state.date,
                 this.state.edad,
                 this.state.sexo,
-                this.state.curp,
                 this.state.tel,
-                this.state.email);
-        }   
+                this.state.email,
+                this.state.password,
+                this.state.area,
+                this.state.level,
+                this.state.active);
+        } 
     }
 
     _renderAlert = () =>{
         if(this.state.showAlert){
             return(
                 <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                    <strong>¡Atención!</strong> Ingresa todos los datos
+                    <strong>¡Atención!</strong> Favor de Ingresar todos los datos
                  </div>
             );
         }else{
@@ -81,21 +84,22 @@ class RegistroBeneficiarios extends Component{
                     <div className="container-login100">
                         <div className="row wrap-login100">
                             <div className="login100-form-title">
-                                <span className="login100-form-title-1">Registra beneficiarios</span>
+                                <span className="login100-form-title-1"></span>
                             </div>
 
-                            <div className="text-center w-100" style={{paddingTop:"15px"}}>
-                                <img className="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
+                            <div className="text-center  w-100" style={{paddingTop:"15px"}}>
+                                <img className="rounded hidalgo" src="Image/Logo.png" alt="IHJ Logo"/>
                             </div>
 
-                            <div className="login100-form" noValidate>
+                            <div className=" login100-form" noValidate>
+
                                 {this._renderAlert()}
 
-                            <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="nombre">Nombre(s): </label>
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="name">Nombre(s): </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="nombre" name="nombre" required
+                                        id="name" name="name" required
                                         placeholder="Tu nombre aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -131,23 +135,10 @@ class RegistroBeneficiarios extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="date">Fecha de nacimiento: </label>
-                                    <input 
-                                        type="date" className="form-control" 
-                                        id="date" name="date" required
-                                        placeholder="Tu fecha aqui ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu fecha de naciemento
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="number">Edad: </label>
+                                    <label htmlFor="edad">Edad: </label>
                                     <input 
                                         type="number" className="form-control" 
-                                        id="edad" name="number" required
+                                        id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -158,34 +149,19 @@ class RegistroBeneficiarios extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                    
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona tu sexo</div>
-                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="text">CURP: </label>
+                                    <label htmlFor="tel">Telefono: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="curp" name="text" required
-                                        placeholder="Tu email aqui ..."
-                                        onChange={this.handleInputChange}
-                                    />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu CURP
-                                    </div>
-                                </div>
-
-                                <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="telefono">Telefono: </label>
-                                    <input 
-                                        type="text" className="form-control" 
-                                        id="tel" name="telefono" required
+                                        id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -207,9 +183,59 @@ class RegistroBeneficiarios extends Component{
                                     </div>
                                 </div>
 
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="password">Contraseña: </label>
+                                    <input 
+                                        type="password" className="form-control" 
+                                        id="password" name="password" required
+                                        placeholder="Tu contraseña aqui ..."
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu contraseña
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="area">Area: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona una area</option>
+                                        <option value="Salud Juvenil">Salud Juvenil</option>
+                                        <option value="Poder Joven">Poder Joven</option>
+                                        <option value="Emprendedores">Emprendedores</option>
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona un area</div>
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="level">Nivel: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona un nivel</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona un nivel</div>
+                                    </div>
+                                </div>
+
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="active">Activo: </label>
+                                    <div className="form-group">
+                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona un estatus</option>
+                                        <option value={true}>SI</option>
+                                        <option value={false}>NO</option>
+                                        </select>
+                                        <div className="invalid-feedback">Selecciona un estatus</div>
+                                    </div>
+                                </div>
+
                                 <div className="col-12 mt-3">
-                                    <button className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
-                                        Registrar
+                                    <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
+                                        Guardar
                                     </button>
                                 </div>
                             </div>
@@ -220,18 +246,17 @@ class RegistroBeneficiarios extends Component{
         );
     }
 }
-
-const mapStateToProps =({responseNewBene}) => {
+const mapStateToProps =({responseNewUser}) => {
     return{
-        responseNewBene: responseNewBene
+        responseNewUser: responseNewUser
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email))
+        addUsers: (name,app,apm,edad,sexo,tel,email,password,area,level,active)=> dispatch(NEW_USER_ACTION(name,app,apm,edad,sexo,tel,email,password,area,level,active))
     };
 };
 
-const ConnectBene= connect(mapStateToProps,mapDispatchToProps)(RegistroBeneficiarios);
-export default ConnectBene;
+const ConnectUsers= connect(mapStateToProps,mapDispatchToProps)(Modificar);
+export default ConnectUsers;

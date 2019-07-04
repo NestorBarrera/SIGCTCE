@@ -9,14 +9,14 @@ const GET_USER_ACTION = () =>{
     };
 }
 
-const NEW_USER_ACTION =(name,app,apm,edad,sexo,tel,email,passwd,area,level,active) =>{
+const NEW_USER_ACTION =(name,app,apm,edad,sexo,tel,email,password,area,level,active) =>{
     return{
         type: "NEW_USER",
         payload: axios({
             method: 'post',
             url: BASE_URL + '/user/signup',
             data:{
-                name,app,apm,edad,sexo,tel,email,passwd,area,level,active
+                name,app,apm,edad,sexo,tel,email,password,area,level,active
             },
             config: {
                 headers:{
@@ -30,7 +30,7 @@ const NEW_USER_ACTION =(name,app,apm,edad,sexo,tel,email,passwd,area,level,activ
 const DELETE_USER_ACTION =(id) =>{
     return{
         type: "DELETE_USER",
-        payload: axios.get(BASE_URL + '/user/delete' + id)
+        payload: axios.get(BASE_URL + '/user/delete/' + id)
     };
 } 
 

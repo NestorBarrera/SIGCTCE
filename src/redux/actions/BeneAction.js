@@ -9,14 +9,14 @@ const GET_BENE_ACTION = () =>{
     };
 }
 
-const NEW_BENE_ACTION =(nombre,app,apm,fecha,edad,sexo,curp,tel,email) =>{
+const NEW_BENE_ACTION =(nombre,app,apm,date,edad,sexo,curp,tel,email) =>{
     return{
         type: "NEW_BENE",
         payload: axios({
             method: 'post',
             url: BASE_URL + '/beneficiario/signup',
             data:{
-                nombre,app,apm,fecha,edad,sexo,curp,tel,email
+                nombre,app,apm,date,edad,sexo,curp,tel,email
             },
             config: {
                 headers:{
@@ -30,7 +30,7 @@ const NEW_BENE_ACTION =(nombre,app,apm,fecha,edad,sexo,curp,tel,email) =>{
 const DELETE_BENE_ACTION =(id) =>{
     return{
         type: "DELETE_BENE",
-        payload: axios.get(BASE_URL + '/bene/delete' + id)
+        payload: axios.get(BASE_URL + 'beneficiario/delete/' + id)
     };
 } 
 

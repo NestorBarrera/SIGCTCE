@@ -30,7 +30,7 @@ class Beneficiarios extends Component {
                     <button className="btn btn-warning">Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
                     </td>
                      
                 </tr>

@@ -8,6 +8,7 @@ import Beneficiarios from './views/Beneficiarios';
 import Principal from './views/Principal';
 import Registro from './views/Registro';
 import User from './views/User';
+import Modificar from './views/Modificar';
 
 class Router extends Component{
     render(){
@@ -21,6 +22,7 @@ class Router extends Component{
                 <Route path="/user" component={User}/>
                 <Route path="/principal" component={Principal}/>
                 <Route path="/registro" component={Registro}/>
+                <Route path="/modificar" component={Modificar}/>
                 
             </Switch>
         );

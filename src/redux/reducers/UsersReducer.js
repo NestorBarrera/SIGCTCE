@@ -8,11 +8,11 @@ const GET_USERS_REDUCER = (state = [], action) =>{
     }
 };
 
-const NEW_USERS_REDUCER = (state = {}, action) =>{
+const NEW_USER_REDUCER = (state = {}, action) =>{
     switch(action.type){
-        case "NEW_USERS_PENDING": return {status: "Pending"};
-        case "NEW_USERS_FULFILLED": return action.payload.data;
-        case "NEW_USERS_REJECTED": return {status : "Error"};
+        case "NEW_USER_PENDING": return {status: "Pending"};
+        case "NEW_USER_FULFILLED": return action.payload.data;
+        case "NEW_USER_REJECTED": return {status : "Error"};
         default: return state;
     }
 };
@@ -27,7 +27,7 @@ const DELETE_USER_REDUCER = (state = {}, action) =>{
 };
 
 export {
-    NEW_USERS_REDUCER,
+    NEW_USER_REDUCER,
     GET_USERS_REDUCER,
     DELETE_USER_REDUCER
 };

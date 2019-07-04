@@ -3,7 +3,7 @@ import promiseMiddleware  from 'redux-promise-middleware';
 
 /////USUARIOS//
 import {
-    NEW_USERS_REDUCER,
+    NEW_USER_REDUCER,
     GET_USERS_REDUCER,
     DELETE_USER_REDUCER
 } from '../reducers/UsersReducer';
@@ -24,7 +24,7 @@ import {
 
 const CATALOGO =combineReducers({
     stateUsers: GET_USERS_REDUCER,
-    responseNewUser: NEW_USERS_REDUCER,
+    responseNewUser: NEW_USER_REDUCER,
     responseDeleteUser: DELETE_USER_REDUCER,
     stateBene: GET_BENE_REDUCER,
     responseNewBene: NEW_BENE_REDUCER,
