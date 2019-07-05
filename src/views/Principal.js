@@ -57,7 +57,7 @@ class Principal extends Component {
             </div> 
             <div className="row justify-content-end">
             <div class="col-4">
-            <a href="#" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
+            <a href="RegistroCursos" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
             </div>
          </div> 
         </div>
@@ -68,7 +68,7 @@ class Principal extends Component {
             <div className="row justify-content-center">
                 <div className="">
                 <table className="table table-hover">
-                <thead>
+                <thead className="thead-dark">
                     <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripción</th>
@@ -90,7 +90,7 @@ class Principal extends Component {
 
             </div>
 
-            <hr class="red small-margin"/><br/><br/><br/>
+
 
     </div>
 

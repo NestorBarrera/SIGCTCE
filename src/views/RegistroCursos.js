@@ -1,14 +1,13 @@
 import React,{Component} from 'react';
-import {municipios,hidalgo} from '../components/data/data';
-
+import {NEW_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {connect} from 'react-redux';
 
 class RegistroCursos extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-          zips:[],
-          colonias:[]
+         showAlert: false
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -18,8 +17,8 @@ class RegistroCursos extends Component{
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
-        if(NewProps.responseNewUser.success === "OK"){
-            window.location.href = "/";
+        if(NewProps.responseNewCursos.success === "OK"){
+            window.location.href = "/principal";
         }
     }
     
@@ -27,63 +26,54 @@ class RegistroCursos extends Component{
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        console.log(name + ": ",value);
-
-        if(name === "municipio"){
-            var zips = [];
-            var newZips = [];
-            hidalgo.map((item,index) => {
-                if(item.nombre === value){
-                    zips.push(item.cp); 
-                }
-            })
-            newZips = zips.filter(function(item, index, array) {
-                return array.indexOf(item) === index;
-            })
-
-            this.setState({
-                zips: [...newZips]
-            });
-            
-        } else if(name === "cp"){
-            var newCols = [];
-            hidalgo.map((item,index) => {
-                if(item.cp === value){
-                    newCols.push(item.asentamiento);
-                }
-            })
-
-            this.setState({
-                colonias: [...newCols]
-            });
-        }
-    
         this.setState({
           [name]: value
         });
     }
 
     handleSubmit() {
-        console.log(this.state);
-        
-        this.props.sendUser(
-            this.state.nombre,
-            this.state.app,
-            this.state.apm,
-            this.state.edad,
-            this.state.sexo,
-            this.state.telefono,
-            this.state.municipio,
-            this.state.cp,
-            this.state.colonia,
-            this.state.calle,
-            this.state.numExt,
-            this.state.email,
-            this.state.password,
-            this.state.area,
-            this.state.level,
-            this.state.active);
+        if(this.state.nombrecurso === undefined ||
+            this.state.descri === undefined ||
+            this.state.ponente === undefined ||
+            this.state.sexo === undefined ||
+            this.state.time === undefined ||
+            this.state.fechini === undefined ||
+            this.state.fechinal === undefined ||
+            this.state.area === undefined ||
+            this.state.active === undefined ||
+            this.state.capacity === undefined
+
+            ){
+                this.setState({
+                    showAlert: true
+                });
+            }else{ 
+            console.log(this.state);
             
+                this.props.addCursos(
+                    this.state.nombrecurso,
+                    this.state.descri,
+                    this.state.ponente,
+                    this.state.sexo,
+                    this.state.time,
+                    this.state.fechini,
+                    this.state.fechinal,
+                    this.state.area,
+                    this.state.active,
+                    this.state.capacity);
+            }
+    }
+
+    _renderAlert = () =>{
+        if(this.state.showAlert){
+            return(
+                <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
+                    <strong>¡Atención!</strong> Favor de Ingresar todos los datos
+                 </div>
+            );
+        }else{
+            return null;
+        }
     }
 
     render(){
@@ -100,7 +90,9 @@ class RegistroCursos extends Component{
                                 <img className="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
                             </div>
 
-                            <form className="needs-validation login100-form" noValidate>
+                            <div className=" login100-form" noValidate>
+
+                                {this._renderAlert()}
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="nombrecurso">Nombre del curso: </label>
@@ -167,10 +159,10 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="date">Fecha de inicio: </label>
+                                    <label htmlFor="fechini">Fecha de inicio: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="date" name="date" required
+                                        id="fechini" name="fechini" required
                                         placeholder="Ingresa la fecha ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -180,10 +172,10 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="date">Fecha de terminación: </label>
+                                    <label htmlFor="fechinal">Fecha de terminación: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="date" name="date" required
+                                        id="fechinal" name="fechinal" required
                                         placeholder="Ingresa la fecha ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -237,11 +229,11 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 mt-3">
-                                    <button type="submit" className="btn btn-success login100-form-btn">
-                                        Registrar
+                                <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}> 
+                                     Registrar
                                     </button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -250,6 +242,17 @@ class RegistroCursos extends Component{
     }
 }
 
+const mapStateToProps =({responseNewCursos}) => {
+    return{
+        responseNewCursos: responseNewCursos
+    };
+}
 
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        addCursos: (nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity))
+    };
+};
 
-export default RegistroCursos;
+const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(RegistroCursos);
+export default ConnectCursos;

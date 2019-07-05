@@ -30,7 +30,7 @@ const NEW_BENE_ACTION =(nombre,app,apm,date,edad,sexo,curp,tel,email) =>{
 const DELETE_BENE_ACTION =(id) =>{
     return{
         type: "DELETE_BENE",
-        payload: axios.get(BASE_URL + 'beneficiario/delete/' + id)
+        payload: axios.get(BASE_URL + '/beneficiario/delete/' + id)
     };
 } 
 

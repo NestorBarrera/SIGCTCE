@@ -18,8 +18,8 @@ class RegistroBeneficiarios extends Component{
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
-        if(NewProps.responseNewUser.success === "OK"){
-            window.location.href = "/Beneficiarios";
+        if(NewProps.responseNewBene.success === "OK"){
+            window.location.href = "/beneficiarios";
         }
     }
     
@@ -47,7 +47,7 @@ class RegistroBeneficiarios extends Component{
                     showAlert: true
                 });
         }else{ 
-            console.log(this.state);
+            
             
             this.props.addBene(
                 this.state.nombre,
@@ -88,7 +88,7 @@ class RegistroBeneficiarios extends Component{
                                 <img className="rounded hidalgo" src="image/logo.png" alt="IHJ Logo"/>
                             </div>
 
-                            <div className="login100-form" noValidate>
+                            <div className=" login100-form" noValidate>
                                 {this._renderAlert()}
 
                             <div className="col-12 col-lg-6 mb-3">
@@ -144,10 +144,10 @@ class RegistroBeneficiarios extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="number">Edad: </label>
+                                    <label htmlFor="edad">Edad: </label>
                                     <input 
                                         type="number" className="form-control" 
-                                        id="edad" name="number" required
+                                        id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -169,10 +169,10 @@ class RegistroBeneficiarios extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="text">CURP: </label>
+                                    <label htmlFor="curp">CURP: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="curp" name="text" required
+                                        id="curp" name="curp" required
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -182,10 +182,10 @@ class RegistroBeneficiarios extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="telefono">Telefono: </label>
+                                    <label htmlFor="tel">Telefono: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="tel" name="telefono" required
+                                        id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
                                     />

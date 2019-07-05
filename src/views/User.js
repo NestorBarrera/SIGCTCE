@@ -37,7 +37,6 @@ class User extends Component {
     }
 
     render() {
-        console.log(this.props.stateUsers);
         return (
 
             <div className="container" style={{marginTop:30}}>
