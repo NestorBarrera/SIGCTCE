@@ -29,7 +29,7 @@ class User extends Component {
                     <button className="btn btn-warning icon-pencil">Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger" onClick={this.props.deleteUser.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteUser.bind(this,row._id)}>Eliminar</button>
                     </td>  
                 </tr>
             );
@@ -41,29 +41,23 @@ class User extends Component {
 
             <div className="container" style={{marginTop:30}}>
                 <div className="row justify-content-center" >    
-                        <div className="">
-                            <nav className="menu">
-                                <ul>
-                                    <li><a href="#">Talleres</a></li>
-                                    <li><a href="#">Cursos</a></li>
-                                    <li><a href="#">Usuarios</a></li>
-                                    <li><a href="#">Beneficiarios</a></li>
-                                </ul>
-                            </nav>
-                        </div>       
+                    <div className="btn-group" role="group">
+                     <a href="Principal" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
+                     <a href="Beneficiarios" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Beneficiarios</a>
+                    </div>     
                 </div>
     
                 <div  style={{textAlign:"right"}}>
-                    <a href="Modificar" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
+                    <a href="Modificar" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
                 </div>
       
-                <hr className="red small-margin"/><br/><br/><br/>
+                <hr className="red small-margin"/><br/><h1><strong>Usuarios</strong> </h1><br/><br/>
 
            
                 <div className="row justify-content-start">
                     <div className="col-12 col-md-7">
                         <table className="table table-hover">
-                            <thead>
+                            <thead  className="thead-dark">
                                 <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellidos</th>

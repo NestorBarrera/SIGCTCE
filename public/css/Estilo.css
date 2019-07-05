@@ -18,28 +18,7 @@
  }
  
  
-    nav{
-        background: #0B70F9;
-    }  
-    nav ul{
-        list-style: none;
-        overflow: hidden;
-    }
-    nav ul li{
-        float: left;
-
-    }
-    nav ul li a{
-        display: block;
-        padding: 20px;
-        color: #ffffff;
-        text-decoration: none;   
-    }
-
-    nav ul li a:hover{ 
-        background: #2d709c;
-    }
-
+   
     table th {
         text-align: center;
       }

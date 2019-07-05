@@ -29,10 +29,10 @@ class Principal extends Component {
                         <a href="#" className="badge badge-primary icon-eye">Ver</a>
                     </td>
                     <td>
-                    <button className="btn btn-warning">Modificar</button>
+                    <button className="btn btn-warning icon-pencil">Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
                     </td>
                      
                 </tr>
@@ -46,25 +46,16 @@ class Principal extends Component {
 
 <div className="container" style={{marginTop:30}}>
     <div className="row justify-content-center" >    
-            <div className="">
-                <nav className="menu">
-                    <ul>
-                        <li><a href="#">Talleres</a></li>
-                        <li><a href="#">Cursos</a></li>
-                        <li><a href="#">Usuarios</a></li>
-                    </ul>
-                </nav>
-            </div> 
-            <div className="row justify-content-end">
-            <div class="col-4">
-            <a href="RegistroCursos" className="icon-user-plus" style={{fontSize:"25px"}}>Agregar</a>
-            </div>
+        <div className="btn-group" role="group">
+            <a href="User" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
+            <a href="Beneficiarios" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Beneficiarios</a>
          </div> 
-        </div>
-        
-
-                <hr class="red small-margin"/><br/><br/><br/>
-
+    </div>
+    <div  style={{textAlign:"right"}}>
+         <a href="RegistroCursos" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
+     </div>
+      <hr class="red small-margin"/><br/><h1><strong>Cursos y Talleres</strong> </h1><br/><br/>
+            
             <div className="row justify-content-center">
                 <div className="">
                 <table className="table table-hover">

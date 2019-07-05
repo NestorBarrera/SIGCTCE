@@ -27,10 +27,10 @@ class Beneficiarios extends Component {
                     <td> {row.tel} </td>
                     <td> {row.email} </td>
                     <td>
-                    <button className="btn btn-warning">Modificar</button>
+                    <button className="btn btn-warning icon-pencil">Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
                     </td>
                      
                 </tr>
@@ -43,22 +43,22 @@ class Beneficiarios extends Component {
         return (
 
 <div className="container" style={{marginTop:30}}>
-
-    <div className="row justify-content-end">
-        <div className="col-4">
-            <a href="Principal" className="icon-circle-left" style={{fontSize:"25px"}}>Regresar </a>
-        </div>
+    <div className="row justify-content-center" > 
+         <div className="btn-group" role="group">
+            <a href="Principal" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
+            <a href="User" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
+        </div>  
     </div>
-    <div className="col-4">
-            <a href="#" className="icon-users" style={{fontSize:"25px"}}> 2</a>
-        </div>
+    <div  style={{textAlign:"right"}}>
+         <a href="Modificar" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
+     </div>
 
-                <hr className="red small-margin"/><br/><br/><br/>
+                <hr className="red small-margin"/><br/><h1><strong>Beneficiarios</strong> </h1><br/><br/>
 
             <div className="row justify-content-start">
                 <div className="col-12 col-md-7">
                 <table className="table table-hover">
-                <thead>
+                <thead  className="thead-dark">
                     <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellidos</th>
@@ -79,8 +79,6 @@ class Beneficiarios extends Component {
                 </div>
 
             </div>
-            <a href=""> <span className="badge badge-pill badge-success icon-download" style={{fontSize:"18px"}}>PDF</span> </a>
-  
             
     </div>
 
