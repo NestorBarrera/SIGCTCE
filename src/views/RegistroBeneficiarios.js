@@ -150,6 +150,8 @@ class RegistroBeneficiarios extends Component{
                                         id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="29"
+                                        min="18"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu edad
@@ -175,6 +177,8 @@ class RegistroBeneficiarios extends Component{
                                         id="curp" name="curp" required
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="18"
+                                        min="18"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu CURP
@@ -188,6 +192,8 @@ class RegistroBeneficiarios extends Component{
                                         id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="10"
+                                        min="10"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu telefono

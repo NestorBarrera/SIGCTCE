@@ -141,6 +141,8 @@ class Modificar extends Component{
                                         id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="29"
+                                        min="18"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu edad
@@ -164,6 +166,8 @@ class Modificar extends Component{
                                         id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="10"
+                                        min="10"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu telefono
@@ -190,6 +194,7 @@ class Modificar extends Component{
                                         id="password" name="password" required
                                         placeholder="Tu contraseña aqui ..."
                                         onChange={this.handleInputChange}
+                                        min="8"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu contraseña
@@ -198,7 +203,6 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
-                                    <div className="form-group">
                                         <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
@@ -206,31 +210,26 @@ class Modificar extends Component{
                                         <option value="Emprendedores">Emprendedores</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un area</div>
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="level">Nivel: </label>
-                                    <div className="form-group">
                                         <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un nivel</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Coordinador">Coordinador</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un nivel</div>
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
-                                    <div className="form-group">
                                         <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un estatus</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un estatus</div>
-                                    </div>
                                 </div>
 
                                 <div className="col-12 mt-3">

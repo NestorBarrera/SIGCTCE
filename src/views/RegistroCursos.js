@@ -222,6 +222,8 @@ class RegistroCursos extends Component{
                                         id="capacity" name="capacity" required
                                         placeholder="Ingresa la capacidad ..."
                                         onChange={this.handleInputChange}
+                                        max="30"
+                                        min="15"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa la capacidad de personas
