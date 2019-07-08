@@ -177,8 +177,8 @@ class RegistroBeneficiarios extends Component{
                                         id="curp" name="curp" required
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
-                                        max="18"
-                                        min="18"
+                                        maxLength="18"
+                                        minLength="18"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu CURP
