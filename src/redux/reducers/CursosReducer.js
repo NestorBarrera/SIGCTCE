@@ -6,7 +6,14 @@ const GET_CURSOS_REDUCER = (state = [], action) =>{
         default: return state;
     }
 };
-
+const GET_CURSO_REDUCER = (state = [], action) =>{
+    switch(action.type){
+        case "GET_CURSO_PENDING": return state;
+        case "GET_CURSO_FULFILLED": return action.payload.data;
+        case "GET_CURSO_REJECTED": return state;
+        default: return state;
+    }
+};
 const NEW_CURSOS_REDUCER = (state = {}, action) =>{
     switch(action.type){
         case "NEW_CURSOS_PENDING": return {status: "Pending"};
@@ -28,5 +35,6 @@ const DELETE_CURSOS_REDUCER = (state = {}, action) =>{
 export {
     NEW_CURSOS_REDUCER,
     GET_CURSOS_REDUCER,
+    GET_CURSO_REDUCER,
     DELETE_CURSOS_REDUCER
 };

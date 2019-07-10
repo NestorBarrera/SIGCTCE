@@ -1,10 +1,17 @@
 import axios from 'axios';
 
 const BASE_URL= "http://" +window.location.hostname + ":8110";
-
-const GET_BENE_ACTION = () =>{
+////////////
+const GET_BENE_ACTION = (id) =>{
     return{
         type: "GET_BENE",
+        payload: axios.get(BASE_URL + '/getBenefi/'+id)
+    };
+}
+///////////
+const GET_BENES_ACTION = () =>{
+    return{
+        type: "GET_BENES",
         payload: axios.get(BASE_URL + '/getBenefi')
     };
 }
@@ -36,6 +43,7 @@ const DELETE_BENE_ACTION =(id) =>{
 
 export {
     GET_BENE_ACTION,
+    GET_BENES_ACTION,
     NEW_BENE_ACTION,
     DELETE_BENE_ACTION
 };

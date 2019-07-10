@@ -26,10 +26,13 @@ class Principal extends Component {
                     <td> {row.area} </td>
                     <td> {row.capacity} </td>
                     <td>
-                        <a href="#" className="badge badge-primary icon-eye">Ver</a>
-                    </td>
-                    <td>
-                    <button className="btn btn-warning icon-pencil">Modificar</button>
+                    <button className="btn btn-warning icon-pencil" onClick={()=>{
+                            let cursoId=[];
+                            cursoId.push(row._id);
+                            localStorage.setItem("cursoId", JSON.stringify(cursoId));
+                            window.location.href="ModificarCursos";
+                        }
+                    }>Modificar</button>
                     </td>
                     <td>
                     <button className="btn btn-danger icon-bin" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
@@ -68,7 +71,6 @@ class Principal extends Component {
                     <th scope="col">Fecha Termino</th>
                     <th scope="col">Área</th>
                     <th scope="col">Capacidad</th>
-                    <th scope="col">Ver</th>
                     <th scope="col">Modificar</th>
                     <th scope="col">Eliminar</th>
                     </tr>

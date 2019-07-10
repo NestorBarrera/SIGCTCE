@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_USER_ACTION, DELETE_USER_ACTION} from '../redux/actions/UsersAction';
+import {GET_USERS_ACTION, DELETE_USER_ACTION} from '../redux/actions/UsersAction';
 
 class User extends Component {
 
@@ -26,7 +26,13 @@ class User extends Component {
                     <td>{row.area}</td>
                     <td>{row.level}</td>
                     <td>
-                    <button className="btn btn-warning icon-pencil">Modificar</button>
+                    <button className="btn btn-warning icon-pencil" onClick={()=>{
+                            let userId=[];
+                            userId.push(row._id);
+                            localStorage.setItem("userId", JSON.stringify(userId));
+                            window.location.href="ModificarUser";
+                        }
+                    }>Modificar</button>
                     </td>
                     <td>
                     <button className="btn btn-danger icon-bin" onClick={this.props.deleteUser.bind(this,row._id)}>Eliminar</button>
@@ -91,7 +97,7 @@ class User extends Component {
     
     const mapDispatchToProps=(dispatch)=>{
         return{
-            getUsers: ()=>dispatch(GET_USER_ACTION()),
+            getUsers: ()=>dispatch(GET_USERS_ACTION()),
             deleteUser:(id)=>dispatch(DELETE_USER_ACTION(id))
         };
     };

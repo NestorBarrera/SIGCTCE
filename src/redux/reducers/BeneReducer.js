@@ -6,6 +6,14 @@ const GET_BENE_REDUCER = (state = [], action) =>{
         default: return state;
     }
 };
+const GET_BENES_REDUCER = (state = [], action) =>{
+    switch(action.type){
+        case "GET_BENES_PENDING": return state;
+        case "GET_BENES_FULFILLED": return action.payload.data;
+        case "GET_BENES_REJECTED": return state;
+        default: return state;
+    }
+};
 
 const NEW_BENE_REDUCER = (state = {}, action) =>{
     switch(action.type){
@@ -28,5 +36,6 @@ const DELETE_BENE_REDUCER = (state = {}, action) =>{
 export {
     NEW_BENE_REDUCER,
     GET_BENE_REDUCER,
+    GET_BENES_REDUCER,
     DELETE_BENE_REDUCER
 };

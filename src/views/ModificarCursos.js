@@ -1,26 +1,27 @@
 import React,{Component} from 'react';
-import {NEW_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSO_ACTION} from '../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
-class RegistroCursos extends Component{
+class ModificarCursos extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
          showAlert: false
         };
-    
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
-
-    componentWillReceiveProps(nextProps){
+    componentDidMount(){
+        let id = JSON.parse(localStorage.getItem("cursoId"));
+        this.props.getCurso(id);
+    }
+  /*  componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseNewCursos.success === "OK"){
             window.location.href = "/principal";
         }
-    }
+    }*/
     
     handleInputChange(event) {
         const target = event.target;
@@ -48,8 +49,6 @@ class RegistroCursos extends Component{
                     showAlert: true
                 });
             }else{ 
-            console.log(this.state);
-            
                 this.props.addCursos(
                     this.state.nombrecurso,
                     this.state.descri,
@@ -77,6 +76,14 @@ class RegistroCursos extends Component{
     }
 
     render(){
+        let {nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity}=this.props.stateCurso;
+        let valActive="SI";
+        if(active !== undefined && active){
+            valActive="SI";
+        }else{
+            valActive="NO";
+        }
+        console.log(this.props.stateCurso);
         return(
             <section className="container">
                 <div className="limiter">
@@ -100,11 +107,8 @@ class RegistroCursos extends Component{
                                         type="text" className="form-control" 
                                         id="nombrecurso" name="nombrecurso" required
                                         placeholder="Nombre aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={nombrecurso || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa el nombre del curso o taller
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -113,11 +117,8 @@ class RegistroCursos extends Component{
                                         type="text" className="form-control" 
                                         id="descri" name="descri" required
                                         placeholder="Descripción del curso"
-                                        onChange={this.handleInputChange}
+                                        defaultValue={descri || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la descripción
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -126,62 +127,48 @@ class RegistroCursos extends Component{
                                         type="text" className="form-control" 
                                         id="ponente" name="ponente" required
                                         placeholder="Nombre del ponente"
-                                        onChange={this.handleInputChange}
+                                        defaultValue={ponente || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu nombre
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
                                     
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona tu sexo</option>
+                                        <option defaultValue={sexo || ""}>{sexo || ""}</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona tu sexo</div>
-                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="time">Horario: </label>
                                     <input 
                                         type="time" className="form-control" 
-                                        id="time" name="time" required
+                                        id="time" ref="time" required
                                         placeholder="Ingresa horario"
-                                        onChange={this.handleInputChange}
+                                        defaultValue={time || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa el horario
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="fechini">Fecha de inicio: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechini" name="fechini" required
+                                        id="fechini" ref="fechini" required
                                         placeholder="Ingresa la fecha ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={fechini || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la fecha de inicio
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="fechinal">Fecha de terminación: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechinal" name="fechinal" required
+                                        id="fechinal" ref="fechinal" required
                                         placeholder="Ingresa la fecha ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={fechinal || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la fecha de fin
-                                    </div>
                                 </div>
 
                                 
@@ -190,13 +177,11 @@ class RegistroCursos extends Component{
                                     <label htmlFor="area">Area: </label>
                                     
                                         <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona una area</option>
+                                        <option defaultValue={area || ""}>{area || ""}</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
                                         <option value="Poder Joven">Poder Joven</option>
                                         <option value="Emprendedores">Emprendedores</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona un area</div>
-                                    
                                 </div>
 
                                
@@ -207,12 +192,10 @@ class RegistroCursos extends Component{
                                     <label htmlFor="active">Tipo: </label>
                                     
                                         <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona</option>
-                                        <option value={true}>Curso</option>
-                                        <option value={false}>Taller</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona</div>
-                                    
+                                        <option defaultValue={active || ""}>{active || ""}</option>
+                                        <option value="Curso">Curso</option>
+                                        <option value="Taller">Taller</option>
+                                        </select>                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -221,13 +204,10 @@ class RegistroCursos extends Component{
                                         type="number" className="form-control" 
                                         id="capacity" name="capacity" required
                                         placeholder="Ingresa la capacidad ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={capacity || ""}
                                         max="30"
                                         min="15"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la capacidad de personas
-                                    </div>
                                 </div>
 
                                 <div className="col-12 mt-3">
@@ -243,18 +223,17 @@ class RegistroCursos extends Component{
         );
     }
 }
-
-const mapStateToProps =({responseNewCursos}) => {
+const mapStateToProps =({stateCurso}) => {
     return{
-        responseNewCursos: responseNewCursos
+        stateCurso: stateCurso
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addCursos: (nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity))
+        getCurso: (id)=>dispatch(GET_CURSO_ACTION(id))
     };
 };
 
-const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(RegistroCursos);
+const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(ModificarCursos);
 export default ConnectCursos;

@@ -1,52 +1,37 @@
 import React,{Component}from'react';
+import { connect} from 'react-redux';
+import {GET_CURSOS_ACTION} from '../redux/actions/CursosAction';
+
 class Cursos extends Component{
+    componentDidMount(){
+        this.props.getCursos()
+    }
+
+     _renderItem = () =>{
+        return this.props.stateCursos.map((row,index)=>{
+            return(
+                <div className="col-12 col-md-4">
+                    <div key={index} className="card" style={{width: '12em'}} >
+                        <div className="card-body">
+                            <h3 className="card-title">{row.nombrecurso}</h3>
+                            <a><strong>Profesor:</strong>{row.ponente} </a>
+                            <p className="card-text"><strong>Fecha de inicio:</strong> {row.datein}</p>
+                            <p className="card-text"><strong>Horario de inicio:</strong> {row.time}</p>
+                            <a href="RegistroBeneficiarios" class="card-link"><center> Registrarse</center></a>
+                        </div>
+                    </div>
+                </div> 
+            );
+        })
+    }
+
     render(){
         return(
             //vista principal
             <section className="container">
+                <div style={{marginTop: '15px'}}>
                 <div className="row justify-content-center" >
-                    <div className="col-12 col-md-3">
-                        <div className="card" style={{width: '12em'}}>
-                        <div className="card-body">
-                            <h5 className="card-title">Curso de señas</h5>
-                            <p className="card-text">Fecha de inicio: 21/06/2019</p>
-                            <p className="card-text">Horarios: 9:00am- 12:00pm</p>
-                            <a href="Principal" class="card-link">Detalles</a>
-                        </div>
-                        </div> 
-                    </div>
-
-                    <div className="col-12 col-md-3">
-                        <div className="card" style={{width: '12em'}}>
-                        <div className="card-body">
-                            <h5 className="card-title">Curso de señas</h5>
-                            <p className="card-text">Fecha de inicio: 21/06/2019</p>
-                            <p className="card-text">Horarios: 9:00am- 12:00pm</p>
-                            <a href="Principal" class="card-link">Detalles</a>
-                        </div>
-                        </div> 
-                    </div>
-
-                    <div className="col-12 col-md-3">
-                        <div className="card" style={{width: '12em'}}>
-                        <div className="card-body">
-                            <h5 className="card-title">Curso de señas</h5>
-                            <p className="card-text">Fecha de inicio: 21/06/2019</p>
-                            <p className="card-text">Horarios: 9:00am- 12:00pm</p>
-                            <a href="Principal" class="card-link">Detalles</a>
-                        </div>
-                        </div> 
-                    </div>
-
-                    <div className="col-12 col-md-3">
-                        <div className="card" style={{width: '12em'}}>
-                        <div className="card-body">
-                            <h5 className="card-title">Curso de señas</h5>
-                            <p className="card-text">Fecha de inicio: 21/06/2019</p>
-                            <p className="card-text">Horarios: 9:00am- 12:00pm</p>
-                            <a href="Principal" class="card-link">Detalles</a>
-                        </div>
-                        </div> 
+                                {this._renderItem()}
                     </div>
                 </div>
                 
@@ -55,4 +40,16 @@ class Cursos extends Component{
             );
         }
     }
-    export default Cursos;
+    const mapStateToProps =({stateCursos,})=>{
+        return{
+            stateCursos: stateCursos,
+        };
+    }
+    
+    const mapDispatchToProps=(dispatch)=>{
+        return{
+            getCursos: ()=>dispatch(GET_CURSOS_ACTION())
+        };
+    };
+    const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(Cursos);
+    export default ConnectCursos;

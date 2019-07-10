@@ -9,6 +9,9 @@ import Principal from './views/Principal';
 import Registro from './views/Registro';
 import User from './views/User';
 import Modificar from './views/Modificar';
+import ModificarUser from './views/ModificarUser';
+import ModificarBene from './views/ModificarBene';
+import ModificarCursos from './views/ModificarCursos';
 
 class Router extends Component{
     render(){
@@ -23,6 +26,9 @@ class Router extends Component{
                 <Route path="/principal" component={Principal}/>
                 <Route path="/registro" component={Registro}/>
                 <Route path="/modificar" component={Modificar}/>
+                <Route path="/modificaruser" component={ModificarUser}/>
+                <Route path="/modificarbene" component={ModificarBene}/>
+                <Route path="/modificarcursos" component={ModificarCursos}/>
                 
             </Switch>
         );

@@ -8,6 +8,12 @@ const GET_CURSOS_ACTION = () =>{
         payload: axios.get(BASE_URL + '/getCursos')
     };
 }
+const GET_CURSO_ACTION = (id) =>{
+    return{
+        type: "GET_CURSO",
+        payload: axios.get(BASE_URL + '/getCursos/'+id)
+    };
+}
 
 const NEW_CURSOS_ACTION =(nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity) =>{
     return{
@@ -36,6 +42,7 @@ const DELETE_CURSOS_ACTION =(id) =>{
 
 export {
     GET_CURSOS_ACTION,
+    GET_CURSO_ACTION,
     NEW_CURSOS_ACTION,
     DELETE_CURSOS_ACTION
 };

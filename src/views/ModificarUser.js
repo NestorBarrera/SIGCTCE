@@ -1,26 +1,30 @@
 import React,{Component} from 'react';
-import {NEW_USER_ACTION} from '../redux/actions/UsersAction';
+import {GET_USER_ACTION} from '../redux/actions/UsersAction';
 import {connect} from 'react-redux';
 
-class Modificar extends Component{
+class ModificarUser extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
             showAlert: false
         };
-    
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    componentWillReceiveProps(nextProps){
+    componentDidMount(){
+        let id = JSON.parse(localStorage.getItem("userId"));
+        this.props.getUser(id);
+    }
+
+    /*componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseNewUser.success === "OK"){
             window.location.href = "/User";
         }
-    }
+    }*/
     
     handleInputChange(event) {
         const target = event.target;
@@ -48,7 +52,6 @@ class Modificar extends Component{
                     showAlert: true
                 });
         }else { 
-        console.log(this.state);
         
             this.props.addUsers(
                 this.state.name,
@@ -78,6 +81,14 @@ class Modificar extends Component{
     }
 
     render(){
+        let {name,app,apm,edad,sexo,tel,email,password,area,level,active}=this.props.stateUser;
+        let valActive="SI";
+        if(active !== undefined && active){
+            valActive="SI";
+        }else{
+            valActive="NO";
+        }
+        console.log(this.props.stateUser);
         return(
             <section className="container">
                 <div className="limiter">
@@ -99,137 +110,112 @@ class Modificar extends Component{
                                     <label htmlFor="name">Nombre(s): </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="name" name="name" required
+                                        id="name" ref="name" required
                                         placeholder="Tu nombre aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={name || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu nombre
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="app">Apellido Paterno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="app" name="app" required
+                                        id="app" ref="app" required
                                         placeholder="Tu apellido aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={app || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="apm">Apellido Materno: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="apm" name="apm" required
+                                        id="apm" ref="apm" required
                                         placeholder="Tu apellido aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={apm || ""}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="edad">Edad: </label>
                                     <input 
                                         type="number" className="form-control" 
-                                        id="edad" name="edad" required
+                                        id="edad" ref="edad" required
                                         placeholder="Tu edad aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={edad || ""}
                                         max="29"
                                         min="18"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu edad
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona tu sexo</option>
+                                        <option defaultValue={sexo || ""}>{sexo || ""}</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Femenino">Femenino</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona tu sexo</div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="tel">Telefono: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="tel" name="tel" required
+                                        id="tel" ref="tel" required
                                         placeholder="Tu telefono aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={tel || ""}
                                         max="10"
                                         min="10"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu telefono
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="email">Email: </label>
                                     <input 
                                         type="email" className="form-control" 
-                                        id="email" name="email" required
+                                        id="email" ref="email" required
                                         placeholder="Tu email aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={email || ""}
                                     />
-                                    <div className="invalid-feedback" id="msj1">
-                                        Por favor ingresa tu email
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="password">Contraseña: </label>
                                     <input 
                                         type="password" className="form-control" 
-                                        id="password" name="password" required
+                                        id="password" ref="password" required
                                         placeholder="Tu contraseña aqui ..."
-                                        onChange={this.handleInputChange}
+                                        defaultValue={password || ""}
                                         min="8"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu contraseña
-                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
-                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona una area</option>
+                                        <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
+                                        <option defaultValue={area || ""}>{area || ""}</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
                                         <option value="Poder Joven">Poder Joven</option>
                                         <option value="Emprendedores">Emprendedores</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona un area</div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="level">Nivel: </label>
-                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un nivel</option>
+                                        <select className="custom-select" id="level" ref="level" onChange={this.handleInputChange} required>
+                                        <option defaultValue={level || ""}>{level || ""}</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Coordinador">Coordinador</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona un nivel</div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona un estatus</option>
+                                        <select className="custom-select" id="active" ref="active" onChange={this.handleInputChange} required>
+                                        <option defaultValue={active || ""}>{active || ""}</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona un estatus</div>
                                 </div>
 
                                 <div className="col-12 mt-3">
@@ -245,17 +231,18 @@ class Modificar extends Component{
         );
     }
 }
-const mapStateToProps =({responseNewUser}) => {
+const mapStateToProps =({stateUser}) => {
     return{
-        responseNewUser: responseNewUser
+        stateUser: stateUser
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addUsers: (name,app,apm,edad,sexo,tel,email,password,area,level,active)=> dispatch(NEW_USER_ACTION(name,app,apm,edad,sexo,tel,email,password,area,level,active))
+        getUser: (id)=>dispatch(GET_USER_ACTION(id))
     };
 };
 
-const ConnectUsers= connect(mapStateToProps,mapDispatchToProps)(Modificar);
+
+const ConnectUsers= connect(mapStateToProps,mapDispatchToProps)(ModificarUser);
 export default ConnectUsers;

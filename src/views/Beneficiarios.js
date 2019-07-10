@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_BENE_ACTION, DELETE_BENE_ACTION} from '../redux/actions/BeneAction';
+import {GET_BENES_ACTION, DELETE_BENE_ACTION} from '../redux/actions/BeneAction';
 
 
 class Beneficiarios extends Component {
     componentDidMount(){
-        this.props.getBene()
+        this.props.getBenes()
     }
 
     componentWillReceiveProps(nextProps){
         const NewProps = nextProps;
         if(NewProps.responseDeleteBene.success === "OK"){
-            this.props.getBene();
+            this.props.getBenes();
         }
     }
 
     _renderItem = () =>{
-        return this.props.stateBene.map((row,index)=>{
+        return this.props.stateBenes.map((row,index)=>{
             return(
                 <tr key={index}>
                     <td>{row.nombre}</td>
@@ -27,7 +27,13 @@ class Beneficiarios extends Component {
                     <td> {row.tel} </td>
                     <td> {row.email} </td>
                     <td>
-                    <button className="btn btn-warning icon-pencil">Modificar</button>
+                    <button className="btn btn-warning icon-pencil" onClick={()=>{
+                            let beneId=[];
+                            beneId.push(row._id);
+                            localStorage.setItem("beneId", JSON.stringify(beneId));
+                            window.location.href="ModificarBene";
+                        }
+                    }>Modificar</button>
                     </td>
                     <td>
                     <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
@@ -85,16 +91,16 @@ class Beneficiarios extends Component {
         );
      }
     }
-    const mapStateToProps =({stateBene, responseDeleteBene})=>{
+    const mapStateToProps =({stateBenes, responseDeleteBene})=>{
         return{
-            stateBene: stateBene,
+            stateBenes: stateBenes,
             responseDeleteBene: responseDeleteBene,
         };
     }
     
     const mapDispatchToProps=(dispatch)=>{
         return{
-            getBene: ()=>dispatch(GET_BENE_ACTION()),
+            getBenes: ()=>dispatch(GET_BENES_ACTION()),
             deleteBene:(id)=>dispatch(DELETE_BENE_ACTION(id))
         };
     };
