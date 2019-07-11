@@ -25,7 +25,14 @@ const NEW_USER_REDUCER = (state = {}, action) =>{
         default: return state;
     }
 };
-
+const UPDATE_USER_REDUCER = (state = {}, action) =>{
+    switch(action.type){
+        case "UPDATE_USER_PENDING": return {status: "Pending"};
+        case "UPDATE_USER_FULFILLED": return action.payload.data;
+        case "UPDATE_USER_REJECTED": return {status : "Error"};
+        default: return state;
+    }
+};
 const DELETE_USER_REDUCER = (state = {}, action) =>{
     switch(action.type){
         case "DELETE_USER_PENDING": return {status: "Pending"};
@@ -39,5 +46,6 @@ export {
     NEW_USER_REDUCER,
     GET_USERS_REDUCER,
     GET_USER_REDUCER,
-    DELETE_USER_REDUCER
+    DELETE_USER_REDUCER,
+    UPDATE_USER_REDUCER
 };

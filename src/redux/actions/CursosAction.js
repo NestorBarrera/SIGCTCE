@@ -32,6 +32,23 @@ const NEW_CURSOS_ACTION =(nombrecurso,descri,ponente,sexo,time,datein,datefi,are
         })
     };
 }
+const UPDATE_CURSOS_ACTION =(id,nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity) =>{
+    return{
+        type: "UPDATE_CURSOS",
+        payload: axios({
+            method: 'put',
+            url: BASE_URL + '/Cursos/edit/'+id,
+            data:{
+                nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity
+            },
+            config: {
+                headers:{
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }
+        })
+    };
+}
 const DELETE_CURSOS_ACTION =(id) =>{
     return{
         type: "DELETE_CURSOS",
@@ -44,5 +61,6 @@ export {
     GET_CURSOS_ACTION,
     GET_CURSO_ACTION,
     NEW_CURSOS_ACTION,
-    DELETE_CURSOS_ACTION
+    DELETE_CURSOS_ACTION,
+    UPDATE_CURSOS_ACTION
 };

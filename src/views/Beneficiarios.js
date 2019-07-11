@@ -21,7 +21,7 @@ class Beneficiarios extends Component {
                 <tr key={index}>
                     <td>{row.nombre}</td>
                     <td>{row.app} {row.apm}</td>
-                    <td>{row.fecha}</td>
+                    <td>{row.date}</td>
                     <td>{row.edad}</td>
                     <td> {row.curp} </td>
                     <td> {row.tel} </td>
@@ -56,7 +56,7 @@ class Beneficiarios extends Component {
         </div>  
     </div>
     <div  style={{textAlign:"right"}}>
-         <a href="Modificar" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
+         <a href="RegistroBeneficiarios" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
      </div>
 
                 <hr className="red small-margin"/><br/><h1><strong>Beneficiarios</strong> </h1><br/><br/>

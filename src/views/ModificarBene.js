@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_BENE_ACTION} from '../redux/actions/BeneAction';
+import {GET_BENE_ACTION, UPDATE_BENE_ACTION} from '../redux/actions/BeneAction';
 import {connect} from 'react-redux';
 
 
@@ -10,59 +10,57 @@ class ModificarBene extends Component{
         this.state = {
             showAlert: false
         };
-    
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
     componentDidMount(){
         let id = JSON.parse(localStorage.getItem("beneId"));
         this.props.getBene(id);
     }
 
-   /* componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
-        if(NewProps.responseNewBene.success === "OK"){
+        if(NewProps.responseUpdateBene.success === "OK"){
             window.location.href = "/beneficiarios";
         }
-    }*/
+    }
     
-    handleInputChange(event) {
+  /*  handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         this.setState({
           [name]: value
         });
-    }
+    }*/
 
     handleSubmit() {
-        if(this.state.nombre ===undefined ||
-            this.state.app ===undefined ||
-            this.state.apm ===undefined ||
-            this.state.date ===undefined ||
-            this.state.edad ===undefined ||
-            this.state.sexo ===undefined ||
-            this.state.curp ===undefined ||
-            this.state.tel ===undefined ||
-            this.state.email ===undefined
+        if(this.refs.nombre.value ==="" ||
+            this.refs.app.value ==="" ||
+            this.refs.apm.value ==="" ||
+            this.refs.date.value ==="" ||
+            this.refs.edad.value ==="" ||
+            this.refs.sexo.value ==="" ||
+            this.refs.curp.value ==="" ||
+            this.refs.tel.value ==="" ||
+            this.refs.email.value ===""
             ){
                 this.setState({
                     showAlert: true
                 });
         }else{ 
-            
-            
-            this.props.addBene(
-                this.state.nombre,
-                this.state.app,
-                this.state.apm,
-                this.state.date,
-                this.state.edad,
-                this.state.sexo,
-                this.state.curp,
-                this.state.tel,
-                this.state.email);
+            let id = JSON.parse(localStorage.getItem("beneId"));
+          
+            this.props.updateBene(
+                this.refs.nombre.value,
+                this.refs.app.value,
+                this.refs.apm.value,
+                this.refs.date.value,
+                this.refs.edad.value,
+                this.refs.sexo.value,
+                this.refs.curp.value,
+                this.refs.tel.value,
+                this.refs.email.value);
         }   
     }
 
@@ -80,9 +78,7 @@ class ModificarBene extends Component{
 
     render(){
         let {nombre,app,apm,date,edad,sexo,curp,tel,email}=this.props.stateBene;
-        let valActive="SI";
-       
-        console.log(this.props.stateBene);
+
         return(
             <section className="container">
                 <div className="limiter">
@@ -156,8 +152,8 @@ class ModificarBene extends Component{
                                     
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option defaultValue={sexo || ""}>{sexo || ""}</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
+                                        <option defaultValue="Masculino">Masculino</option>
+                                        <option defaultValue="Femenino">Femenino</option>
                                         </select>
                                 </div>
 
@@ -195,10 +191,13 @@ class ModificarBene extends Component{
                                     />
                                 </div>
 
-                                <div className="col-12 mt-3">
-                                    <button className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="Beneficiarios"
+                                        }}>Cancelar</button>
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
                                         Registrar
-                                    </button>
+                                        </button>
                                 </div>
                             </div>
                         </div>
@@ -208,15 +207,17 @@ class ModificarBene extends Component{
         );
     }
 }
-const mapStateToProps =({stateBene}) => {
+const mapStateToProps =({stateBene,responseUpdateBene}) => {
     return{
-        stateBene: stateBene
+        stateBene: stateBene,
+        responseUpdateBene:responseUpdateBene
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        getBene: (id)=>dispatch(GET_BENE_ACTION(id))
+        getBene: (id)=>dispatch(GET_BENE_ACTION(id)),
+        updateBene:(id,nombre,app,apm,date,edad,sexo,curp,tel,email)=>dispatch(UPDATE_BENE_ACTION(id,nombre,app,apm,date,edad,sexo,curp,tel,email))
     };
 };
 

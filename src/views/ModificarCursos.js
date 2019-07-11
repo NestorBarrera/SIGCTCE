@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_CURSO_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSO_ACTION,UPDATE_CURSOS_ACTION} from '../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 class ModificarCursos extends Component{
@@ -14,52 +14,55 @@ class ModificarCursos extends Component{
         let id = JSON.parse(localStorage.getItem("cursoId"));
         this.props.getCurso(id);
     }
-  /*  componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
-        if(NewProps.responseNewCursos.success === "OK"){
+        if(NewProps.responseUpdateCursos.success === "OK"){
             window.location.href = "/principal";
         }
-    }*/
+    }
     
-    handleInputChange(event) {
+  /*  handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         this.setState({
           [name]: value
         });
-    }
+    }*/
 
     handleSubmit() {
-        if(this.state.nombrecurso === undefined ||
-            this.state.descri === undefined ||
-            this.state.ponente === undefined ||
-            this.state.sexo === undefined ||
-            this.state.time === undefined ||
-            this.state.fechini === undefined ||
-            this.state.fechinal === undefined ||
-            this.state.area === undefined ||
-            this.state.active === undefined ||
-            this.state.capacity === undefined
+        if(this.refs.nombrecurso.value === "" ||
+            this.refs.descri.value === "" ||
+            this.refs.ponente.value === "" ||
+            this.refs.sexo.value === "" ||
+            this.refs.time.value === "" ||
+            this.refs.datein.value === "" ||
+            this.refs.datefi.value === "" ||
+            this.refs.area.value === "" ||
+            this.refs.tipo.value === "" ||
+            this.refs.capacity.value === ""
 
             ){
                 this.setState({
                     showAlert: true
                 });
             }else{ 
-                this.props.addCursos(
-                    this.state.nombrecurso,
-                    this.state.descri,
-                    this.state.ponente,
-                    this.state.sexo,
-                    this.state.time,
-                    this.state.fechini,
-                    this.state.fechinal,
-                    this.state.area,
-                    this.state.active,
-                    this.state.capacity);
+                let id = JSON.parse(localStorage.getItem("cursoId"));
+
+                this.props.updateCursos(
+                    id,
+                    this.refs.nombrecurso.value,
+                    this.refs.descri.value,
+                    this.refs.ponente.value,
+                    this.refs.sexo.value,
+                    this.refs.time.value,
+                    this.refs.datein.value,
+                    this.refs.datefi.value,
+                    this.refs.area.value,
+                    this.refs.tipo.value,
+                    this.refs.capacity.value);
             }
     }
 
@@ -76,13 +79,8 @@ class ModificarCursos extends Component{
     }
 
     render(){
-        let {nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity}=this.props.stateCurso;
-        let valActive="SI";
-        if(active !== undefined && active){
-            valActive="SI";
-        }else{
-            valActive="NO";
-        }
+        let {nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity}=this.props.stateCurso;
+        
         console.log(this.props.stateCurso);
         return(
             <section className="container">
@@ -105,7 +103,7 @@ class ModificarCursos extends Component{
                                     <label htmlFor="nombrecurso">Nombre del curso o taller: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="nombrecurso" name="nombrecurso" required
+                                        id="nombrecurso" ref="nombrecurso" required
                                         placeholder="Nombre aqui ..."
                                         defaultValue={nombrecurso || ""}
                                     />
@@ -115,7 +113,7 @@ class ModificarCursos extends Component{
                                     <label htmlFor="descri">Descripción: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="descri" name="descri" required
+                                        id="descri" ref="descri" required
                                         placeholder="Descripción del curso"
                                         defaultValue={descri || ""}
                                     />
@@ -125,7 +123,7 @@ class ModificarCursos extends Component{
                                     <label htmlFor="ponente">Ponente: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="ponente" name="ponente" required
+                                        id="ponente" ref="ponente" required
                                         placeholder="Nombre del ponente"
                                         defaultValue={ponente || ""}
                                     />
@@ -136,8 +134,8 @@ class ModificarCursos extends Component{
                                     
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option defaultValue={sexo || ""}>{sexo || ""}</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
+                                        <option defaultValue="Masculino">Masculino</option>
+                                        <option defaultValue="Femenino">Femenino</option>
                                         </select>
                                 </div>
 
@@ -152,22 +150,22 @@ class ModificarCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="fechini">Fecha de inicio: </label>
+                                    <label htmlFor="datein">Fecha de inicio: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechini" ref="fechini" required
+                                        id="datein" ref="datein" required
                                         placeholder="Ingresa la fecha ..."
-                                        defaultValue={fechini || ""}
+                                        defaultValue={datein || ""}
                                     />
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="fechinal">Fecha de terminación: </label>
+                                    <label htmlFor="datefi">Fecha de terminación: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechinal" ref="fechinal" required
+                                        id="datefi" ref="datefi" required
                                         placeholder="Ingresa la fecha ..."
-                                        defaultValue={fechinal || ""}
+                                        defaultValue={datefi || ""}
                                     />
                                 </div>
 
@@ -176,25 +174,21 @@ class ModificarCursos extends Component{
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
                                     
-                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
                                         <option defaultValue={area || ""}>{area || ""}</option>
-                                        <option value="Salud Juvenil">Salud Juvenil</option>
-                                        <option value="Poder Joven">Poder Joven</option>
-                                        <option value="Emprendedores">Emprendedores</option>
+                                        <option defaultValue="Salud Juvenil">Salud Juvenil</option>
+                                        <option defaultValue="Poder Joven">Poder Joven</option>
+                                        <option defaultValue="Emprendedores">Emprendedores</option>
                                         </select>
                                 </div>
 
-                               
-
-                                
-
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="active">Tipo: </label>
+                                    <label htmlFor="tipo">Tipo: </label>
                                     
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
-                                        <option defaultValue={active || ""}>{active || ""}</option>
-                                        <option value="Curso">Curso</option>
-                                        <option value="Taller">Taller</option>
+                                        <select className="custom-select" id="tipo" ref="tipo" onChange={this.handleInputChange} required>
+                                        <option defaultValue={tipo || ""}>{tipo || ""}</option>
+                                        <option defaultValue="Curso">Curso</option>
+                                        <option defaultValue="Taller">Taller</option>
                                         </select>                                    
                                 </div>
 
@@ -202,7 +196,7 @@ class ModificarCursos extends Component{
                                     <label htmlFor="capacity">Capacidad de personas: </label>
                                     <input 
                                         type="number" className="form-control" 
-                                        id="capacity" name="capacity" required
+                                        id="capacity" ref="capacity" required
                                         placeholder="Ingresa la capacidad ..."
                                         defaultValue={capacity || ""}
                                         max="30"
@@ -210,10 +204,13 @@ class ModificarCursos extends Component{
                                     />
                                 </div>
 
-                                <div className="col-12 mt-3">
-                                <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}> 
-                                     Registrar
-                                    </button>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="Principal"
+                                        }}>Cancelar</button>
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
+                                        Registrar
+                                        </button>
                                 </div>
                             </div>
                         </div>
@@ -223,15 +220,17 @@ class ModificarCursos extends Component{
         );
     }
 }
-const mapStateToProps =({stateCurso}) => {
+const mapStateToProps =({stateCurso,responseUpdateCursos}) => {
     return{
-        stateCurso: stateCurso
+        stateCurso: stateCurso,
+        responseUpdateCursos: responseUpdateCursos
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        getCurso: (id)=>dispatch(GET_CURSO_ACTION(id))
+        getCurso: (id)=>dispatch(GET_CURSO_ACTION(id)),
+        updateCursos:(id,nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity)=>dispatch(UPDATE_CURSOS_ACTION(id,nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity))
     };
 };
 

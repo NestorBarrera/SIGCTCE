@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_USER_ACTION} from '../redux/actions/UsersAction';
+import {GET_USER_ACTION,UPDATE_USER_ACTION} from '../redux/actions/UsersAction';
 import {connect} from 'react-redux';
 
 class ModificarUser extends Component{
@@ -9,7 +9,6 @@ class ModificarUser extends Component{
         this.state = {
             showAlert: false
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount(){
@@ -17,54 +16,55 @@ class ModificarUser extends Component{
         this.props.getUser(id);
     }
 
-    /*componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
 
-        if(NewProps.responseNewUser.success === "OK"){
+        if(NewProps.responseUpdateUser.success === "OK"){
             window.location.href = "/User";
         }
-    }*/
-    
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.setState({
-          [name]: value
-        });
     }
-
+    
     handleSubmit() {
-        if(this.state.name ===undefined || 
-            this.state.app ===undefined ||
-            this.state.apm ===undefined ||
-            this.state.edad ===undefined ||
-            this.state.sexo ===undefined ||
-            this.state.tel ===undefined ||
-            this.state.email ===undefined ||
-            this.state.password ===undefined ||
-            this.state.area ===undefined ||
-            this.state.level ===undefined ||
-            this.state.active ===undefined
+       // console.log(this.refs.name.value);
+        if(this.refs.name.value === "" || 
+            this.refs.app.value === "" ||
+            this.refs.apm.value === "" ||
+            this.refs.edad.value === "" ||
+            this.refs.sexo.value === "" ||
+            this.refs.tel.value === "" ||
+            this.refs.email.value === "" ||
+            this.refs.password.value === "" ||
+            this.refs.area.value === "" ||
+            this.refs.level.value === "" ||
+            this.refs.active.value === ""
             ){
                 this.setState({
                     showAlert: true
                 });
         }else { 
+            let id = JSON.parse(localStorage.getItem("userId"));
+            let active = null;
+            if(this.refs.active.value === "SI"){
+                active = true;
+            } else{
+                active = false;
+            }
         
-            this.props.addUsers(
-                this.state.name,
-                this.state.app,
-                this.state.apm,
-                this.state.edad,
-                this.state.sexo,
-                this.state.tel,
-                this.state.email,
-                this.state.password,
-                this.state.area,
-                this.state.level,
-                this.state.active);
+            this.props.updateUser(
+                id,
+                this.refs.name.value,
+                this.refs.app.value,
+                this.refs.apm.value,
+                this.refs.edad.value,
+                this.refs.sexo.value,
+                this.refs.tel.value,
+                this.refs.email.value,
+                this.refs.password.value,
+                this.refs.area.value,
+                this.refs.level.value,
+                active
+            );
         } 
     }
 
@@ -88,7 +88,7 @@ class ModificarUser extends Component{
         }else{
             valActive="NO";
         }
-        console.log(this.props.stateUser);
+        
         return(
             <section className="container">
                 <div className="limiter">
@@ -150,10 +150,10 @@ class ModificarUser extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
                                         <option defaultValue={sexo || ""}>{sexo || ""}</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
+                                        <option defaultValue="Masculino">Masculino</option>
+                                        <option defaultValue="Femenino">Femenino</option>
                                         </select>
                                 </div>
 
@@ -194,9 +194,9 @@ class ModificarUser extends Component{
                                     <label htmlFor="area">Area: </label>
                                         <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
                                         <option defaultValue={area || ""}>{area || ""}</option>
-                                        <option value="Salud Juvenil">Salud Juvenil</option>
-                                        <option value="Poder Joven">Poder Joven</option>
-                                        <option value="Emprendedores">Emprendedores</option>
+                                        <option defaultValue="Salud Juvenil">Salud Juvenil</option>
+                                        <option defaultValue="Poder Joven">Poder Joven</option>
+                                        <option defaultValue="Emprendedores">Emprendedores</option>
                                         </select>
                                 </div>
 
@@ -212,16 +212,19 @@ class ModificarUser extends Component{
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
                                         <select className="custom-select" id="active" ref="active" onChange={this.handleInputChange} required>
-                                        <option defaultValue={active || ""}>{active || ""}</option>
+                                        <option defaultValue={active || ""}>{valActive || ""}</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>
                                         </select>
                                 </div>
 
-                                <div className="col-12 mt-3">
-                                    <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
-                                        Guardar
-                                    </button>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="User"
+                                        }}>Cancelar</button>
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
+                                        Registrar
+                                        </button>
                                 </div>
                             </div>
                         </div>
@@ -231,15 +234,17 @@ class ModificarUser extends Component{
         );
     }
 }
-const mapStateToProps =({stateUser}) => {
+const mapStateToProps =({stateUser,responseUpdateUser}) => {
     return{
-        stateUser: stateUser
+        stateUser: stateUser,
+        responseUpdateUser: responseUpdateUser
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        getUser: (id)=>dispatch(GET_USER_ACTION(id))
+        getUser: (id)=>dispatch(GET_USER_ACTION(id)),
+        updateUser: (id,name,app,apm,edad,sexo,tel,email,password,area,level,active)=>dispatch(UPDATE_USER_ACTION(id,name,app,apm,edad,sexo,tel,email,password,area,level,active))
     };
 };
 

@@ -37,10 +37,10 @@ class RegistroCursos extends Component{
             this.state.ponente === undefined ||
             this.state.sexo === undefined ||
             this.state.time === undefined ||
-            this.state.fechini === undefined ||
-            this.state.fechinal === undefined ||
+            this.state.datein === undefined ||
+            this.state.datefi === undefined ||
             this.state.area === undefined ||
-            this.state.active === undefined ||
+            this.state.tipo === undefined ||
             this.state.capacity === undefined
 
             ){
@@ -56,10 +56,10 @@ class RegistroCursos extends Component{
                     this.state.ponente,
                     this.state.sexo,
                     this.state.time,
-                    this.state.fechini,
-                    this.state.fechinal,
+                    this.state.datein,
+                    this.state.datefi,
                     this.state.area,
-                    this.state.active,
+                    this.state.tipo,
                     this.state.capacity);
             }
     }
@@ -162,7 +162,7 @@ class RegistroCursos extends Component{
                                     <label htmlFor="fechini">Fecha de inicio: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechini" name="fechini" required
+                                        id="datein" name="datein" required
                                         placeholder="Ingresa la fecha ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -172,10 +172,10 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="fechinal">Fecha de terminación: </label>
+                                    <label htmlFor="datefi">Fecha de terminación: </label>
                                     <input 
                                         type="date" className="form-control" 
-                                        id="fechinal" name="fechinal" required
+                                        id="datefi" name="datefi" required
                                         placeholder="Ingresa la fecha ..."
                                         onChange={this.handleInputChange}
                                     />
@@ -204,12 +204,12 @@ class RegistroCursos extends Component{
                                 
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="active">Tipo: </label>
+                                    <label htmlFor="tipo">Tipo: </label>
                                     
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="tipo" name="tipo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona</option>
-                                        <option value={true}>Curso</option>
-                                        <option value={false}>Taller</option>
+                                        <option value="Curso">Curso</option>
+                                        <option value="Taller">Taller</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona</div>
                                     
@@ -252,7 +252,7 @@ const mapStateToProps =({responseNewCursos}) => {
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addCursos: (nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,sexo,time,fechini,fechinal,area,active,capacity))
+        addCursos: (nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity))
     };
 };
 

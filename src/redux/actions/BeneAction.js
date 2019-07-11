@@ -33,6 +33,23 @@ const NEW_BENE_ACTION =(nombre,app,apm,date,edad,sexo,curp,tel,email) =>{
         })
     };
 }
+const UPDATE_BENE_ACTION =(id,nombre,app,apm,date,edad,sexo,curp,tel,email) =>{
+    return{
+        type: "UPDATE_BENE",
+        payload: axios({
+            method: 'put',
+            url: BASE_URL + '/beneficiario/edit/',
+            data:{
+                nombre,app,apm,date,edad,sexo,curp,tel,email
+            },
+            config: {
+                headers:{
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
+            }
+        })
+    };
+}
 
 const DELETE_BENE_ACTION =(id) =>{
     return{
@@ -45,5 +62,6 @@ export {
     GET_BENE_ACTION,
     GET_BENES_ACTION,
     NEW_BENE_ACTION,
-    DELETE_BENE_ACTION
+    DELETE_BENE_ACTION,
+    UPDATE_BENE_ACTION
 };

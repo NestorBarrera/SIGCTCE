@@ -212,11 +212,14 @@ class RegistroBeneficiarios extends Component{
                                         Por favor ingresa tu email
                                     </div>
                                 </div>
-
-                                <div className="col-12 mt-3">
-                                    <button className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="Cursos"
+                                        }}>Cancelar</button>
+                                        
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
                                         Registrar
-                                    </button>
+                                        </button>
                                 </div>
                             </div>
                         </div>

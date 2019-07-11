@@ -50,8 +50,8 @@ class Principal extends Component {
 <div className="container" style={{marginTop:30}}>
     <div className="row justify-content-center" >    
         <div className="btn-group" role="group">
-            <a href="User" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
-            <a href="Beneficiarios" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Beneficiarios</a>
+            <a href="User" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
+            <a href="Beneficiarios" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Beneficiarios</a>
          </div> 
     </div>
     <div  style={{textAlign:"right"}}>
