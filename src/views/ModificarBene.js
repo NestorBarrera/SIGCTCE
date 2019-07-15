@@ -17,22 +17,12 @@ class ModificarBene extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseUpdateBene.success === "OK"){
             window.location.href = "/beneficiarios";
         }
     }
-    
-  /*  handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.setState({
-          [name]: value
-        });
-    }*/
 
     handleSubmit() {
         if(this.refs.nombre.value ==="" ||
@@ -50,8 +40,8 @@ class ModificarBene extends Component{
                 });
         }else{ 
             let id = JSON.parse(localStorage.getItem("beneId"));
-          
             this.props.updateBene(
+                id,
                 this.refs.nombre.value,
                 this.refs.app.value,
                 this.refs.apm.value,
@@ -78,7 +68,6 @@ class ModificarBene extends Component{
 
     render(){
         let {nombre,app,apm,date,edad,sexo,curp,tel,email}=this.props.stateBene;
-
         return(
             <section className="container">
                 <div className="limiter">
@@ -149,8 +138,7 @@ class ModificarBene extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                    
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
                                         <option defaultValue={sexo || ""}>{sexo || ""}</option>
                                         <option defaultValue="Masculino">Masculino</option>
                                         <option defaultValue="Femenino">Femenino</option>

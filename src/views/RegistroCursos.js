@@ -229,11 +229,13 @@ class RegistroCursos extends Component{
                                         Por favor ingresa la capacidad de personas
                                     </div>
                                 </div>
-
-                                <div className="col-12 mt-3">
-                                <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}> 
-                                     Registrar
-                                    </button>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="Principal"
+                                        }}>Cancelar</button>
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
+                                        Registrar
+                                        </button>
                                 </div>
                             </div>
                         </div>

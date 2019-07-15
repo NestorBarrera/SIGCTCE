@@ -38,7 +38,7 @@ const UPDATE_BENE_ACTION =(id,nombre,app,apm,date,edad,sexo,curp,tel,email) =>{
         type: "UPDATE_BENE",
         payload: axios({
             method: 'put',
-            url: BASE_URL + '/beneficiario/edit/',
+            url: BASE_URL + '/beneficiario/edit/'+id,
             data:{
                 nombre,app,apm,date,edad,sexo,curp,tel,email
             },

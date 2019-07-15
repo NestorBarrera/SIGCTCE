@@ -48,8 +48,6 @@ class Modificar extends Component{
                     showAlert: true
                 });
         }else { 
-        console.log(this.state);
-        
             this.props.addUsers(
                 this.state.name,
                 this.state.app,
@@ -231,11 +229,13 @@ class Modificar extends Component{
                                         </select>
                                         <div className="invalid-feedback">Selecciona un estatus</div>
                                 </div>
-
-                                <div className="col-12 mt-3">
-                                    <button  className="btn btn-success login100-form-btn" onClick={this.handleSubmit.bind(this)}>
-                                        Guardar
-                                    </button>
+                                <div className="btn-group w-100" role="group" >
+                                        <button  className="btn btn-primary" onClick={()=>{
+                                            window.location.href="User"
+                                        }}>Cancelar</button>
+                                        <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
+                                        Registrar
+                                        </button>
                                 </div>
                             </div>
                         </div>

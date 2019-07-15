@@ -3,30 +3,24 @@ import {GET_USER_ACTION,UPDATE_USER_ACTION} from '../redux/actions/UsersAction';
 import {connect} from 'react-redux';
 
 class ModificarUser extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
             showAlert: false
         };
     }
-
     componentDidMount(){
         let id = JSON.parse(localStorage.getItem("userId"));
         this.props.getUser(id);
     }
-
     componentWillReceiveProps(nextProps){
-        //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseUpdateUser.success === "OK"){
-            window.location.href = "/User";
+            window.location.href = "/user";
         }
     }
-    
     handleSubmit() {
-       // console.log(this.refs.name.value);
         if(this.refs.name.value === "" || 
             this.refs.app.value === "" ||
             this.refs.apm.value === "" ||

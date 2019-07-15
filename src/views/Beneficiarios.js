@@ -45,7 +45,6 @@ class Beneficiarios extends Component {
     }
 
     render() {
-    console.log(this.props.stateBene);
         return (
 
 <div className="container" style={{marginTop:30}}>

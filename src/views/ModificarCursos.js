@@ -3,7 +3,6 @@ import {GET_CURSO_ACTION,UPDATE_CURSOS_ACTION} from '../redux/actions/CursosActi
 import {connect} from 'react-redux';
 
 class ModificarCursos extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
@@ -15,23 +14,12 @@ class ModificarCursos extends Component{
         this.props.getCurso(id);
     }
     componentWillReceiveProps(nextProps){
-        //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseUpdateCursos.success === "OK"){
             window.location.href = "/principal";
         }
     }
-    
-  /*  handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.setState({
-          [name]: value
-        });
-    }*/
-
     handleSubmit() {
         if(this.refs.nombrecurso.value === "" ||
             this.refs.descri.value === "" ||
@@ -50,7 +38,6 @@ class ModificarCursos extends Component{
                 });
             }else{ 
                 let id = JSON.parse(localStorage.getItem("cursoId"));
-
                 this.props.updateCursos(
                     id,
                     this.refs.nombrecurso.value,
@@ -80,8 +67,6 @@ class ModificarCursos extends Component{
 
     render(){
         let {nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity}=this.props.stateCurso;
-        
-        console.log(this.props.stateCurso);
         return(
             <section className="container">
                 <div className="limiter">
@@ -132,7 +117,7 @@ class ModificarCursos extends Component{
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
                                     
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
                                         <option defaultValue={sexo || ""}>{sexo || ""}</option>
                                         <option defaultValue="Masculino">Masculino</option>
                                         <option defaultValue="Femenino">Femenino</option>
