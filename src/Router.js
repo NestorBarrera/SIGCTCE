@@ -12,6 +12,7 @@ import Modificar from './views/Modificar';
 import ModificarUser from './views/ModificarUser';
 import ModificarBene from './views/ModificarBene';
 import ModificarCursos from './views/ModificarCursos';
+import VistaCurso from './views/VistaCurso';
 
 class Router extends Component{
     render(){
@@ -29,6 +30,7 @@ class Router extends Component{
                 <Route path="/modificaruser" component={ModificarUser}/>
                 <Route path="/modificarbene" component={ModificarBene}/>
                 <Route path="/modificarcursos" component={ModificarCursos}/>
+                <Route path="/vistacurso" component={VistaCurso}/>
                 
             </Switch>
         );

@@ -3,18 +3,15 @@ import { connect} from 'react-redux';
 import {GET_USERS_ACTION, DELETE_USER_ACTION} from '../redux/actions/UsersAction';
 
 class User extends Component {
-
     componentDidMount(){
         this.props.getUsers();
     }
-
     componentWillReceiveProps(nextProps){
         const NewProps = nextProps;
         if(NewProps.responseDeleteUser.success === "OK"){
             this.props.getUsers();
         }
     }
-
     _renderItem = () =>{
         return this.props.stateUsers.map((row,index)=>{
             return(
@@ -41,10 +38,8 @@ class User extends Component {
             );
         })
     }
-
     render() {
         return (
-
             <div className="container" style={{marginTop:30}}>
                 <div className="row justify-content-center" >    
                     <div className="btn-group" role="group">

@@ -3,16 +3,13 @@ import {NEW_CURSOS_ACTION} from '../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 class RegistroCursos extends Component{
-
     constructor(props) {
         super(props);
         this.state = {
          showAlert: false
         };
-    
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-
     componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
         const NewProps = nextProps;
@@ -48,8 +45,6 @@ class RegistroCursos extends Component{
                     showAlert: true
                 });
             }else{ 
-            console.log(this.state);
-            
                 this.props.addCursos(
                     this.state.nombrecurso,
                     this.state.descri,
@@ -195,13 +190,8 @@ class RegistroCursos extends Component{
                                         <option value="Poder Joven">Poder Joven</option>
                                         <option value="Emprendedores">Emprendedores</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona un area</div>
-                                    
+                                        <div className="invalid-feedback">Selecciona un area</div> 
                                 </div>
-
-                               
-
-                                
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="tipo">Tipo: </label>
@@ -212,7 +202,6 @@ class RegistroCursos extends Component{
                                         <option value="Taller">Taller</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona</div>
-                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">

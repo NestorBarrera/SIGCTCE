@@ -15,7 +15,6 @@ class RegistroBeneficiarios extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseNewBene.success === "OK"){
@@ -47,8 +46,6 @@ class RegistroBeneficiarios extends Component{
                     showAlert: true
                 });
         }else{ 
-            
-            
             this.props.addBene(
                 this.state.nombre,
                 this.state.app,

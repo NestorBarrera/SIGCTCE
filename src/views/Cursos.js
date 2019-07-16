@@ -11,13 +11,20 @@ class Cursos extends Component{
         return this.props.stateCursos.map((row,index)=>{
             return(
                 <div className="col-12 col-md-4">
-                    <div key={index} className="card" style={{width: '12em'}} >
+                     <img src="../image/curso.jpg" class="card-img-top" height="200px"/>
+                    <div key={index} className="card" >
                         <div className="card-body">
                             <h3 className="card-title">{row.nombrecurso}</h3>
-                            <a><strong>Profesor:</strong>{row.ponente} </a>
+                            <a><strong>Ponente:</strong>{row.ponente} </a>
                             <p className="card-text"><strong>Fecha de inicio:</strong> {row.datein}</p>
                             <p className="card-text"><strong>Horario de inicio:</strong> {row.time}</p>
-                            <a href="RegistroBeneficiarios" class="card-link"><center> Registrarse</center></a>
+                            <button type="button" className="btn btn-primary" onClick={()=>{
+                            let cursoId=[];
+                            cursoId.push(row._id);
+                            localStorage.setItem("cursoId", JSON.stringify(cursoId));
+                            window.location.href="VistaCurso";
+                        }
+                    } ><center> Detalles</center></button>
                         </div>
                     </div>
                 </div> 

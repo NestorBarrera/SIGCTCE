@@ -53,7 +53,7 @@ class Principal extends Component {
                 <div  style={{textAlign:"right"}}>
                     <a href="RegistroCursos" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
                 </div>
-                <hr class="red small-margin"/><br/><h1><strong>Cursos y Talleres</strong> </h1><br/><br/>
+                <hr className="red small-margin"/><br/><h1><strong>Cursos y Talleres</strong> </h1><br/><br/>
                     
                         <div className="row justify-content-center">
                             <div className="">
