@@ -57,7 +57,7 @@ class Principal extends Component {
                     
                         <div className="row justify-content-center">
                             <div className="">
-                                <table className="table table-hover">
+                                <table className="table table-responsive-hover">
                                     <thead className="thead-dark">
                                         <tr>
                                         <th scope="col">Nombre</th>

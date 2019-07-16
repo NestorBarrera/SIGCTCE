@@ -62,7 +62,7 @@ class Beneficiarios extends Component {
 
             <div className="row justify-content-start">
                 <div className="col-12 col-md-7">
-                <table className="table table-hover">
+                <table className="table table-responsive-hover">
                 <thead  className="thead-dark">
                     <tr>
                     <th scope="col">Nombre</th>

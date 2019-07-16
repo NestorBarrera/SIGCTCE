@@ -151,8 +151,8 @@ class Modificar extends Component{
                                     <label htmlFor="sexo">Sexo: </label>
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
+                                        <option value="Masculino">H</option>
+                                        <option value="Femenino">M</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona tu sexo</div>
                                 </div>
@@ -234,7 +234,7 @@ class Modificar extends Component{
                                             window.location.href="User"
                                         }}>Cancelar</button>
                                         <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
-                                        Registrar
+                                        Guardar
                                         </button>
                                 </div>
                             </div>

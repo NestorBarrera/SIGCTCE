@@ -25,20 +25,26 @@ class VistaCurso extends Component{
         let {nombrecurso,descri,ponente,sexo,time,datein,datefi,capacity}=this.props.stateCurso;
             return(
                 <section className="container">
-                <div className="col-12 col-md-7">
-                     <img src="../image/curso.jpg" class="card-img-top" height="200px"/>
+                <div className="responsive">
+                     <img src="../image/curso.png" class="card-img-top" width="100px" />
                     
                             <h1 className="card-title"> {nombrecurso || ""}</h1>
-                            <a><strong>Descripcion:</strong> {descri || ""} </a>
-                            <a><strong>Ponente:</strong>{ponente || ""} </a>
-                            <a><strong>sexo:</strong>{sexo || ""} </a>
-                            <a><strong>Horario:</strong>{time || ""} </a>
+                            <p><strong>Descripcion:</strong> {descri || ""} </p>
+                            <p><strong>Ponente:</strong>{ponente || ""} </p>
+                            <p><strong>Reseña:</strong>{sexo || ""} </p>
+                            <p><strong>Horario:</strong>{time || ""} </p>
                             <p className="card-text"><strong>Fecha de inicio:</strong>{datein || ""}</p>
                             <p className="card-text"><strong>Horario de inicio:</strong> {datefi || ""}</p>
                             <p className="card-text"><strong>Capacidad de personas:</strong> {capacity || ""}</p>
-                            <button type="button" className="btn btn-primary" onClick={()=>{
+                        <div className="btn-group " role="group" >
+                        <button type="button" className="btn btn-primary" onClick={()=>{
+                                window.location.href="Cursos"
+                            }} ><center> Regresar</center></button>
+
+                            <button type="button" className="btn btn-success" onClick={()=>{
                                 window.location.href="RegistroCursos"
                             }} ><center> Inscribirse</center></button>
+                        </div>
                        
                 </div> 
             </section>

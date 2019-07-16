@@ -43,7 +43,7 @@ class Header extends Component{
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNavDropdown2">
                             <ul className="navbar-nav">
-                                <li><a className="nav-link" href="/logout">Cerrar Sesión</a></li>
+                                <li><a className="nav-link" href="/">Cerrar Sesión</a></li>
                             </ul>
                         </div>
                     </div>

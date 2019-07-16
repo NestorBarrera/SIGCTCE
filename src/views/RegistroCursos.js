@@ -129,15 +129,16 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="sexo">Sexo: </label>
-                                    
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
-                                        <option value="">Selecciona tu sexo</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
-                                        </select>
-                                        <div className="invalid-feedback">Selecciona tu sexo</div>
-                                    
+                                    <label htmlFor="sexo">Reseña de Ponente: </label>
+                                    <input 
+                                        type="text" className="form-control" 
+                                        id="sexo" name="sexo" required
+                                        placeholder="Ingresa tu reseña"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <div className="invalid-feedback">
+                                        Por favor ingresa tu nombre
+                                    </div>
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -223,7 +224,7 @@ class RegistroCursos extends Component{
                                             window.location.href="Principal"
                                         }}>Cancelar</button>
                                         <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
-                                        Registrar
+                                        Guardar
                                         </button>
                                 </div>
                             </div>
