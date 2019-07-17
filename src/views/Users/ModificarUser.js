@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_USER_ACTION,UPDATE_USER_ACTION} from '../redux/actions/UsersAction';
+import {GET_USER_ACTION,UPDATE_USER_ACTION} from '../../redux/actions/UsersAction';
 import {connect} from 'react-redux';
 
 class ModificarUser extends Component{

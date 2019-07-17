@@ -6,13 +6,14 @@ import Cursos from './views/Cursos';
 import RegistroBeneficiarios from './views/RegistroBeneficiarios';
 import Beneficiarios from './views/Beneficiarios';
 import Principal from './views/Principal';
-import Registro from './views/Registro';
-import User from './views/User';
+import Registro from './views/Users/Registro';
+import User from './views/Users/User';
 import Modificar from './views/Modificar';
-import ModificarUser from './views/ModificarUser';
+import ModificarUser from './views/Users/ModificarUser';
 import ModificarBene from './views/ModificarBene';
 import ModificarCursos from './views/ModificarCursos';
 import VistaCurso from './views/VistaCurso';
+import RegistroBeneficiarios2 from './views/RegistroBeneficiarios2';
 
 class Router extends Component{
     render(){
@@ -31,6 +32,7 @@ class Router extends Component{
                 <Route path="/modificarbene" component={ModificarBene}/>
                 <Route path="/modificarcursos" component={ModificarCursos}/>
                 <Route path="/vistacurso" component={VistaCurso}/>
+                <Route path="/registrobeneficiarios2" component={RegistroBeneficiarios2}/>
                 
             </Switch>
         );

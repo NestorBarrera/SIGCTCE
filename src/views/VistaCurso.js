@@ -42,7 +42,7 @@ class VistaCurso extends Component{
                             }} ><center> Regresar</center></button>
 
                             <button type="button" className="btn btn-success" onClick={()=>{
-                                window.location.href="RegistroCursos"
+                                window.location.href="RegistroBeneficiarios2"
                             }} ><center> Inscribirse</center></button>
                         </div>
                        

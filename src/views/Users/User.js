@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_USERS_ACTION, DELETE_USER_ACTION} from '../redux/actions/UsersAction';
+import {GET_USERS_ACTION, DELETE_USER_ACTION} from '../../redux/actions/UsersAction';
 
 class User extends Component {
     componentDidMount(){

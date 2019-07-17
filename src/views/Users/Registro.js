@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {municipios,hidalgo} from '../components/data/data';
+import {municipios,hidalgo} from '../../components/data/data';
 
 class Registro extends Component{
 
