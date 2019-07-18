@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_CURSO_ACTION,UPDATE_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSO_ACTION,UPDATE_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 class ModificarCursos extends Component{

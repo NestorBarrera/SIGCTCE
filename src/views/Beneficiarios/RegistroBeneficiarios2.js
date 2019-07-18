@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import {NEW_BENE_ACTION} from '../redux/actions/BeneAction';
+import {NEW_BENE_ACTION} from '../../redux/actions/BeneAction';
 import {connect} from 'react-redux';
 
 
-class RegistroBeneficiarios extends Component{
+class RegistroBeneficiarios2 extends Component{
 
     constructor(props) {
         super(props);
@@ -18,7 +18,7 @@ class RegistroBeneficiarios extends Component{
         const NewProps = nextProps;
 
         if(NewProps.responseNewBene.success === "OK"){
-            window.location.href = "/beneficiarios";
+            window.location.href = "/cursos";
         }
     }
     
@@ -211,7 +211,7 @@ class RegistroBeneficiarios extends Component{
                                 </div>
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{
-                                            window.location.href="Beneficiarios"
+                                            window.location.href="Cursos"
                                         }}>Cancelar</button>
                                         
                                         <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
@@ -239,5 +239,5 @@ const mapDispatchToProps=(dispatch)=>{
     };
 };
 
-const ConnectBene= connect(mapStateToProps,mapDispatchToProps)(RegistroBeneficiarios);
-export default ConnectBene;
+const ConnectBene2= connect(mapStateToProps,mapDispatchToProps)(RegistroBeneficiarios2);
+export default ConnectBene2;

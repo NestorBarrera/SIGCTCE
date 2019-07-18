@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_CURSOS_ACTION, DELETE_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSOS_ACTION, DELETE_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 
 class Principal extends Component {
     componentDidMount(){

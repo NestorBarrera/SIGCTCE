@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
-import {GET_BENES_ACTION, DELETE_BENE_ACTION} from '../redux/actions/BeneAction';
+import {GET_BENES_ACTION, DELETE_BENE_ACTION} from '../../redux/actions/BeneAction';
 
 
 class Beneficiarios extends Component {

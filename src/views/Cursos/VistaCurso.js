@@ -1,6 +1,6 @@
 import React,{Component}from'react';
 import { connect} from 'react-redux';
-import {GET_CURSO_ACTION} from '../redux/actions/CursosAction';
+import {GET_CURSO_ACTION} from '../../redux/actions/CursosAction';
 
 class VistaCurso extends Component{
     constructor(props) {
@@ -45,7 +45,6 @@ class VistaCurso extends Component{
                                 window.location.href="RegistroBeneficiarios2"
                             }} ><center> Inscribirse</center></button>
                         </div>
-                       
                 </div> 
             </section>
             );

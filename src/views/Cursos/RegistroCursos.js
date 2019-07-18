@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {NEW_CURSOS_ACTION} from '../redux/actions/CursosAction';
+import {NEW_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 class RegistroCursos extends Component{

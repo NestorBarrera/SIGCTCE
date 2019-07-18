@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {GET_BENE_ACTION, UPDATE_BENE_ACTION} from '../redux/actions/BeneAction';
+import {GET_BENE_ACTION, UPDATE_BENE_ACTION} from '../../redux/actions/BeneAction';
 import {connect} from 'react-redux';
 
 
