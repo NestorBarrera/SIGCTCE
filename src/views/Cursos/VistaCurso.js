@@ -24,10 +24,16 @@ class VistaCurso extends Component{
     _renderItem = () =>{
         let {nombrecurso,descri,ponente,sexo,time,datein,datefi,capacity}=this.props.stateCurso;
             return(
-                <section className="container">
-                <div className="responsive">
-                     <img src="../image/curso.png" class="card-img-top" width="100px" />
-                    
+        <section className="container">
+            <div className="responsive">
+                <div className="mb-3" style={{maxWidth: '540px'}}>
+                    <div className="row no-gutters">
+                        <div className="col-md-4">
+                            <img src="../image/card.jpg" className="card-img" height='300px'/>
+                        </div>
+
+                        <div className="col-md-8">
+                            <div className="card-body">
                             <h1 className="card-title"> {nombrecurso || ""}</h1>
                             <p><strong>Descripcion:</strong> {descri || ""} </p>
                             <p><strong>Ponente:</strong>{ponente || ""} </p>
@@ -44,17 +50,21 @@ class VistaCurso extends Component{
                             <button type="button" className="btn btn-success" onClick={()=>{
                                 window.location.href="RegistroBeneficiarios2"
                             }} ><center> Inscribirse</center></button>
+                             </div>
+                            </div>
                         </div>
+                    </div>
                 </div> 
-            </section>
+            </div>
+        </section>
             );
     }
     render(){
         return(
             <section className="container">
                 <div style={{marginTop: '15px'}}>
-                <div className="row justify-content-center" >
-                                {this._renderItem()}
+                    <div className="row justify-content-center" >
+                        {this._renderItem()}
                     </div>
                 </div>
                 

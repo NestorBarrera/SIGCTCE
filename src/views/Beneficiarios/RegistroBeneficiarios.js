@@ -8,7 +8,8 @@ class RegistroBeneficiarios extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            showAlert: false
+            showAlert: false,
+            errors:[]
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,6 +33,8 @@ class RegistroBeneficiarios extends Component{
     }
 
     handleSubmit() {
+        let err = [];
+        let edad = parseInt(this.state.edad);
         if(this.state.nombre ===undefined ||
             this.state.app ===undefined ||
             this.state.apm ===undefined ||
@@ -40,11 +43,23 @@ class RegistroBeneficiarios extends Component{
             this.state.sexo ===undefined ||
             this.state.curp ===undefined ||
             this.state.tel ===undefined ||
-            this.state.email ===undefined
-            ){
-                this.setState({
-                    showAlert: true
-                });
+            this.state.email ===undefined){ 
+            err.push("Ingresa todos los datos solicitados"); 
+        }
+        if(this.state.curp.length !==18){
+            err.push("Verifica tu CURP");
+        }
+        if(this.state.tel.length !==10){
+            err.push("Verifica tu numero de telefono");
+        }
+        if(edad < 18 || edad>29){
+            err.push("Verifica tu edad");
+        }
+        if(err.length !==0){
+            this.setState({
+                errors: err,
+                showAlert: true
+            })
         }else{ 
             this.props.addBene(
                 this.state.nombre,
@@ -61,11 +76,15 @@ class RegistroBeneficiarios extends Component{
 
     _renderAlert = () =>{
         if(this.state.showAlert){
+        return this.state.errors.map((error,index)=>{
             return(
-                <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                    <strong>¡Atención!</strong> Ingresa todos los datos
-                 </div>
+                <div className="col-12" key={index}>
+                    <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
+                        <p className="w-100 mb-0">{error}</p>
+                    </div>
+                </div>
             );
+        })
         }else{
             return null;
         }

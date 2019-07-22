@@ -37,12 +37,12 @@ class Cursos extends Component{
             //vista principal
             <section className="container">
                 <div style={{marginTop: '15px'}}>
-                <div className="row justify-content-center" >
-                                {this._renderItem()}
+                    <div className="row justify-content-center" >
+                        {this._renderItem()}
                     </div>
                 </div>
-                
-            </section>                
+            </section>    
+                        
 
             );
         }

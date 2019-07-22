@@ -7,7 +7,8 @@ class Modificar extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            showAlert: false
+            showAlert: false,
+            errors:[]
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,6 +33,8 @@ class Modificar extends Component{
     }
 
     handleSubmit() {
+        let err = [];
+        let edad = parseInt(this.state.edad);
         if(this.state.name ===undefined || 
             this.state.app ===undefined ||
             this.state.apm ===undefined ||
@@ -42,11 +45,27 @@ class Modificar extends Component{
             this.state.password ===undefined ||
             this.state.area ===undefined ||
             this.state.level ===undefined ||
-            this.state.active ===undefined
-            ){
-                this.setState({
-                    showAlert: true
-                });
+            this.state.active ===undefined){
+            err.push("Ingresa todos los datos solicitados");
+
+        }
+        if(this.state.tel.length !==10){
+            err.push("Verifica tu numero de telefono");
+        }
+
+        if(this.state.password.length !==8){
+            err.push("Contraseña minimo de 8 caracteres");
+        }
+
+        if(edad < 18 || edad>29){
+            err.push("Verifica tu edad");
+        }
+
+        if(err.length !==0){
+            this.setState({
+                errors: err,
+                showAlert: true
+            })
         }else { 
             this.props.addUsers(
                 this.state.name,
@@ -65,11 +84,15 @@ class Modificar extends Component{
 
     _renderAlert = () =>{
         if(this.state.showAlert){
-            return(
-                <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                    <strong>¡Atención!</strong> Favor de Ingresar todos los datos
-                 </div>
-            );
+            return this.state.errors.map((error,index)=>{
+                return(
+                    <div className="col-12" key={index}>
+                        <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
+                            <p className="w-100 mb-0">{error}</p>
+                        </div>
+                    </div>
+                );
+        })
         }else{
             return null;
         }
@@ -139,8 +162,6 @@ class Modificar extends Component{
                                         id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
-                                        max="29"
-                                        min="18"
                                     />
                                     <div className="invalid-feedback">
                                         Por favor ingresa tu edad

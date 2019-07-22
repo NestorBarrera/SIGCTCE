@@ -6,7 +6,8 @@ class RegistroCursos extends Component{
     constructor(props) {
         super(props);
         this.state = {
-         showAlert: false
+         showAlert: false,
+         errors:[]
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -29,6 +30,8 @@ class RegistroCursos extends Component{
     }
 
     handleSubmit() {
+        let err = [];
+        let capacity = parseInt(this.state.capacity)
         if(this.state.nombrecurso === undefined ||
             this.state.descri === undefined ||
             this.state.ponente === undefined ||
@@ -38,12 +41,18 @@ class RegistroCursos extends Component{
             this.state.datefi === undefined ||
             this.state.area === undefined ||
             this.state.tipo === undefined ||
-            this.state.capacity === undefined
-
-            ){
+            this.state.capacity === undefined){
+            err.push("Ingresa todos los datos solicitados");
+                
+            }
+            if(capacity < 15 || capacity > 33){
+                err.push("Verifica la capacidad de tu curso");
+            }
+            if(err.length !==0){
                 this.setState({
+                    errors: err,
                     showAlert: true
-                });
+                })
             }else{ 
                 this.props.addCursos(
                     this.state.nombrecurso,
@@ -61,11 +70,15 @@ class RegistroCursos extends Component{
 
     _renderAlert = () =>{
         if(this.state.showAlert){
+        return this.state.errors.map((error,index)=>{
             return(
-                <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                    <strong>¡Atención!</strong> Favor de Ingresar todos los datos
-                 </div>
+                <div className="col-12" key={index}>
+                    <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
+                        <p className="w-100 mb-0">{error}</p>
+                    </div>
+                </div>
             );
+        })
         }else{
             return null;
         }
@@ -212,7 +225,7 @@ class RegistroCursos extends Component{
                                         id="capacity" name="capacity" required
                                         placeholder="Ingresa la capacidad ..."
                                         onChange={this.handleInputChange}
-                                        max="30"
+                                        max="33"
                                         min="15"
                                     />
                                     <div className="invalid-feedback">
