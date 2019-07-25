@@ -47,9 +47,9 @@ class Cursos extends Component{
             );
         }
     }
-    const mapStateToProps =({stateCursos,})=>{
+    const mapStateToProps =({stateCursos})=>{
         return{
-            stateCursos: stateCursos,
+            stateCursos: stateCursos
         };
     }
     

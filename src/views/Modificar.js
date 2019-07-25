@@ -15,7 +15,6 @@ class Modificar extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        //const ActualProps = this.props;
         const NewProps = nextProps;
 
         if(NewProps.responseNewUser.success === "OK"){

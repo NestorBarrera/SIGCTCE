@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
 import {NEW_BENE_ACTION} from '../../redux/actions/BeneAction';
+import {GET_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 
 class RegistroBeneficiarios2 extends Component{
-
+    componentDidMount(){
+        this.props.getCursos()
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -43,23 +46,24 @@ class RegistroBeneficiarios2 extends Component{
             this.state.sexo ===undefined ||
             this.state.curp ===undefined ||
             this.state.tel ===undefined ||
-            this.state.email ===undefined){
-            err.push("Ingresa todos los datos solicitados");
+            this.state.email ===undefined ||
+            this.state.curso ===undefined ){
+            err.push("Ingresa todos los datos solicitados")
         }
-        if(this.state.curp.length !==18){
+        if(this.state.curp.length !== 18)
             err.push("Verifica tu CURP");
-        }
-        if(this.state.tel.length !==10){
+        
+        if(this.state.tel.length !==10)
             err.push("Verifica tu numero de telefono");
-        }
-        if(edad < 18 || edad>29){
+        
+        if(edad < 18 || edad > 29)
             err.push("Verifica tu edad");
-        }
+    
         if(err.length !==0){
             this.setState({
                 errors: err,
                 showAlert: true
-            })
+            });
         }else{ 
             this.props.addBene(
                 this.state.nombre,
@@ -70,7 +74,8 @@ class RegistroBeneficiarios2 extends Component{
                 this.state.sexo,
                 this.state.curp,
                 this.state.tel,
-                this.state.email);
+                this.state.email,
+                this.state.curso);
         }   
     }
 
@@ -89,8 +94,15 @@ class RegistroBeneficiarios2 extends Component{
             return null;
         }
     }
-
+    _renderItem = () =>{
+        return this.props.stateCursos.map((row)=>{
+            return(
+                <option>{row.nombrecurso} </option>
+            );
+        })
+    }
     render(){
+       // console.log(this.props.RegistroBeneficiarios2);
         return(
             <section className="container">
                 <div className="limiter">
@@ -115,9 +127,7 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu nombre aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu nombre
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -128,9 +138,7 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -141,9 +149,7 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -154,9 +160,7 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu fecha aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu fecha de naciemento
-                                    </div>
+                                   
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -169,9 +173,7 @@ class RegistroBeneficiarios2 extends Component{
                                         max="29"
                                         min="18"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu edad
-                                    </div>
+                                   
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -193,12 +195,9 @@ class RegistroBeneficiarios2 extends Component{
                                         id="curp" name="curp" required
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
-                                        maxLength="18"
-                                        minLength="18"
+                                        
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu CURP
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -208,12 +207,9 @@ class RegistroBeneficiarios2 extends Component{
                                         id="tel" name="tel" required
                                         placeholder="Tu telefono aqui ..."
                                         onChange={this.handleInputChange}
-                                        max="10"
-                                        min="10"
+                                        
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu telefono
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -224,9 +220,15 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu email
-                                    </div>
+                                    
+                                </div>
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="curso">Seleciona el Curso o Taller: </label>
+                                    
+                                        <select className="custom-select" id="curso" name="curso" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona </option>
+                                        {this._renderItem()}
+                                        </select>
                                 </div>
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{
@@ -246,15 +248,17 @@ class RegistroBeneficiarios2 extends Component{
     }
 }
 
-const mapStateToProps =({responseNewBene}) => {
+const mapStateToProps =({responseNewBene,stateCursos}) => {
     return{
-        responseNewBene: responseNewBene
+        responseNewBene: responseNewBene,
+        stateCursos: stateCursos
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email))
+        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email,curso)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email,curso)),
+        getCursos: ()=>dispatch(GET_CURSOS_ACTION())
     };
 };
 

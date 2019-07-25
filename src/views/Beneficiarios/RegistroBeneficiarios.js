@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
 import {NEW_BENE_ACTION} from '../../redux/actions/BeneAction';
+import {GET_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
 
 class RegistroBeneficiarios extends Component{
-
+    componentDidMount(){
+        this.props.getCursos()
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -89,7 +92,13 @@ class RegistroBeneficiarios extends Component{
             return null;
         }
     }
-
+    _renderItem = () =>{
+        return this.props.stateCursos.map((row,index)=>{
+            return(
+                <option>{row.nombrecurso} </option>
+            );
+        })
+    }
     render(){
         return(
             <section className="container">
@@ -228,6 +237,14 @@ class RegistroBeneficiarios extends Component{
                                         Por favor ingresa tu email
                                     </div>
                                 </div>
+                                <div className="col-12 col-lg-6 mb-3">
+                                    <label htmlFor="sexo">Seleciona el Curso o Taller: </label>
+                                    
+                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <option value="">Selecciona </option>
+                                        {this._renderItem()}
+                                        </select>
+                                </div>
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{
                                             window.location.href="Beneficiarios"
@@ -246,15 +263,17 @@ class RegistroBeneficiarios extends Component{
     }
 }
 
-const mapStateToProps =({responseNewBene}) => {
+const mapStateToProps =({responseNewBene,stateCursos}) => {
     return{
-        responseNewBene: responseNewBene
+        responseNewBene: responseNewBene,
+        stateCursos: stateCursos
     };
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email))
+        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email)),
+        getCursos: ()=>dispatch(GET_CURSOS_ACTION())
     };
 };
 
