@@ -35,7 +35,7 @@ class RegistroCursos extends Component{
         if(this.state.nombrecurso === undefined ||
             this.state.descri === undefined ||
             this.state.ponente === undefined ||
-            this.state.sexo === undefined ||
+            this.state.resena === undefined ||
             this.state.time === undefined ||
             this.state.datein === undefined ||
             this.state.datefi === undefined ||
@@ -44,10 +44,12 @@ class RegistroCursos extends Component{
             this.state.capacity === undefined){
             err.push("Ingresa todos los datos solicitados");
                 
+            }else{
+                if(capacity < 15 || capacity > 33){
+                    err.push("Verifica la capacidad de tu curso");
+                }
             }
-            if(capacity < 15 || capacity > 33){
-                err.push("Verifica la capacidad de tu curso");
-            }
+            
             if(err.length !==0){
                 this.setState({
                     errors: err,
@@ -58,7 +60,7 @@ class RegistroCursos extends Component{
                     this.state.nombrecurso,
                     this.state.descri,
                     this.state.ponente,
-                    this.state.sexo,
+                    this.state.resena,
                     this.state.time,
                     this.state.datein,
                     this.state.datefi,
@@ -142,10 +144,10 @@ class RegistroCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="sexo">Reseña de Ponente: </label>
+                                    <label htmlFor="resena">Reseña de Ponente: </label>
                                     <input 
                                         type="text" className="form-control" 
-                                        id="sexo" name="sexo" required
+                                        id="resena" name="resena" required
                                         placeholder="Ingresa tu reseña"
                                         onChange={this.handleInputChange}
                                     />
@@ -257,7 +259,7 @@ const mapStateToProps =({responseNewCursos}) => {
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addCursos: (nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity))
+        addCursos: (nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity))
     };
 };
 

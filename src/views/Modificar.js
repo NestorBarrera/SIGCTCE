@@ -47,18 +47,20 @@ class Modificar extends Component{
             this.state.active ===undefined){
             err.push("Ingresa todos los datos solicitados");
 
+        }else{
+            if(this.state.tel.length !==10){
+                err.push("Verifica tu numero de telefono");
+            }
+    
+            if(this.state.password.length !==8){
+                err.push("Contraseña minimo de 8 caracteres");
+            }
+    
+            if(edad < 18 || edad>29){
+                err.push("Verifica tu edad");
+            }
         }
-        if(this.state.tel.length !==10){
-            err.push("Verifica tu numero de telefono");
-        }
-
-        if(this.state.password.length !==8){
-            err.push("Contraseña minimo de 8 caracteres");
-        }
-
-        if(edad < 18 || edad>29){
-            err.push("Verifica tu edad");
-        }
+        
 
         if(err.length !==0){
             this.setState({
@@ -169,7 +171,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
                                         <option value="Masculino">H</option>
                                         <option value="Femenino">M</option>
@@ -221,7 +223,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
-                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
                                         <option value="Poder Joven">Poder Joven</option>
@@ -232,7 +234,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="level">Nivel: </label>
-                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="level" ref="level" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un nivel</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Coordinador">Coordinador</option>
@@ -242,7 +244,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
-                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="active" ref="active" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un estatus</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>

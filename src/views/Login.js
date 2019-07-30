@@ -44,10 +44,10 @@ render(){
 
                                 <div className="col-12 mt-3">
                                     <button type="submit" className="btn btn-success login100-form-btn">
-                                        Registrar
+                                        Ingresar
                                     </button>
                                 </div>
-                            </form>
+                    </form>
             </div>
         </div>
     </div>

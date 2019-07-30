@@ -49,15 +49,17 @@ class RegistroBeneficiarios2 extends Component{
             this.state.email ===undefined ||
             this.state.curso ===undefined ){
             err.push("Ingresa todos los datos solicitados")
-        }
-        if(this.state.curp.length !== 18)
+        }else{
+            if(this.state.curp.length !== 18)
             err.push("Verifica tu CURP");
         
-        if(this.state.tel.length !==10)
+            if(this.state.tel.length !==10)
             err.push("Verifica tu numero de telefono");
         
-        if(edad < 18 || edad > 29)
+            if(edad < 18 || edad > 29)
             err.push("Verifica tu edad");
+        }
+        
     
         if(err.length !==0){
             this.setState({
