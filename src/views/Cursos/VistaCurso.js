@@ -26,10 +26,10 @@ class VistaCurso extends Component{
             return(
         <section className="container">
             <div className="responsive">
-                <div className="mb-3" style={{maxWidth: '540px'}}>
+                <div className="mb-3" style={{maxWidth: '800px'}}>
                     <div className="row no-gutters">
                         <div className="col-md-4">
-                            <img src="../image/card.jpg" className="card-img" height='300px'/>
+                            <img src="../image/card.jpg" className="card-img" height='300px' width='600px'/>
                         </div>
 
                         <div className="col-md-8">
@@ -37,7 +37,7 @@ class VistaCurso extends Component{
                             <h1 className="card-title"> {nombrecurso || ""}</h1>
                             <p><strong>Descripcion:</strong> {descri || ""} </p>
                             <p><strong>Ponente:</strong>{ponente || ""} </p>
-                            <p><strong>Reseña:</strong>{sexo || ""} </p>
+                            <p><strong>Reseña del Ponente:</strong>{sexo || ""} </p>
                             <p><strong>Horario:</strong>{time || ""} </p>
                             <p className="card-text"><strong>Fecha de inicio:</strong>{datein || ""}</p>
                             <p className="card-text"><strong>Horario de inicio:</strong> {datefi || ""}</p>

@@ -16,6 +16,7 @@ import VistaCurso from './views/Cursos/VistaCurso';
 import RegistroBeneficiarios2 from './views/Beneficiarios/RegistroBeneficiarios2';
 import PrincipalUser from './views/Users/PrincipalUser';
 import MostrarBene from './views/Users/MostrarBene';
+import RegisCurs from './views/Users/RegisCurs';
 
 class Router extends Component{
     render(){
@@ -37,7 +38,7 @@ class Router extends Component{
                 <Route path="/registrobeneficiarios2" component={RegistroBeneficiarios2}/>
                 <Route path="/principaluser" component={PrincipalUser}/>
                 <Route path="/mostrarbene" component={MostrarBene}/>
-                
+                <Route path="/regiscurs" component={RegisCurs}/>
             </Switch>
         );
     }

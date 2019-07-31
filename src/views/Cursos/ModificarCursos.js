@@ -24,7 +24,7 @@ class ModificarCursos extends Component{
         if(this.refs.nombrecurso.value === "" ||
             this.refs.descri.value === "" ||
             this.refs.ponente.value === "" ||
-            this.refs.sexo.value === "" ||
+            this.refs.resena.value === "" ||
             this.refs.time.value === "" ||
             this.refs.datein.value === "" ||
             this.refs.datefi.value === "" ||
@@ -43,7 +43,7 @@ class ModificarCursos extends Component{
                     this.refs.nombrecurso.value,
                     this.refs.descri.value,
                     this.refs.ponente.value,
-                    this.refs.sexo.value,
+                    this.refs.resena.value,
                     this.refs.time.value,
                     this.refs.datein.value,
                     this.refs.datefi.value,
@@ -66,7 +66,7 @@ class ModificarCursos extends Component{
     }
 
     render(){
-        let {nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity}=this.props.stateCurso;
+        let {nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity}=this.props.stateCurso;
         return(
             <section className="container">
                 <div className="limiter">
@@ -115,13 +115,13 @@ class ModificarCursos extends Component{
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="sexo">Sexo: </label>
-                                    
-                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
-                                        <option defaultValue={sexo || ""}>{sexo || ""}</option>
-                                        <option defaultValue="Masculino">Masculino</option>
-                                        <option defaultValue="Femenino">Femenino</option>
-                                        </select>
+                                    <label htmlFor="resena">Reseña de Ponente: </label>
+                                    <input 
+                                        type="text" className="form-control" 
+                                        id="resena" ref="resena" required
+                                        placeholder="Ingresa tu reseña"
+                                        defaultValue={resena || ""}
+                                    />
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -215,7 +215,7 @@ const mapStateToProps =({stateCurso,responseUpdateCursos}) => {
 const mapDispatchToProps=(dispatch)=>{
     return{
         getCurso: (id)=>dispatch(GET_CURSO_ACTION(id)),
-        updateCursos:(id,nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity)=>dispatch(UPDATE_CURSOS_ACTION(id,nombrecurso,descri,ponente,sexo,time,datein,datefi,area,tipo,capacity))
+        updateCursos:(id,nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity)=>dispatch(UPDATE_CURSOS_ACTION(id,nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity))
     };
 };
 

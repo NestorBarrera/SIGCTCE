@@ -50,15 +50,21 @@ class MostrarBene extends Component {
 <div className="container" style={{marginTop:30}}>
     <div className="row justify-content-center" > 
          <div className="btn-group" role="group">
-            <a href="PrincipalUser" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
+            <a href="PrincipalUser" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cursos y Talleres</a>
         </div>  
     </div>
-    <div  style={{textAlign:"right"}}>
-         <a href="RegistroBeneficiarios" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
-     </div>
-
-                <hr className="red small-margin"/><br/><h1><strong>Beneficiarios</strong> </h1><br/><br/>
-
+                <hr className="red small-margin"/><br/><h1><strong>Beneficiarios</strong> </h1>
+     
+<div className="input-group-append" style={{textAlign:"right"}}>
+    <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true">Selecciona el Taller</button>
+    <div className="dropdown-menu">
+      <a className="dropdown-item" href="#">Curso Señas</a>
+      <a className="dropdown-item" href="#">Curso de Ingles</a>
+      <a className="dropdown-item" href="#">Taller de Arduino</a>
+      <a className="dropdown-item" href="#">Taller de Fotografia</a>
+    </div>
+  </div>
+  
             <div className="row justify-content-start">
                 <div className="col-12 col-md-7">
                 <table className="table table-responsive-hover">

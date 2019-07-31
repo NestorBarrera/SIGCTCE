@@ -50,7 +50,7 @@ class PrincipalUser extends Component {
                     </div> 
                 </div>
                 <div  style={{textAlign:"right"}}>
-                    <a href="RegistroCursos" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
+                    <a href="RegisCurs" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
                 </div>
                 <hr className="red small-margin"/><br/><h1><strong>Cursos y Talleres</strong> </h1><br/><br/>
                     

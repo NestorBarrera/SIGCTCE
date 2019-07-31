@@ -46,25 +46,26 @@ class RegistroBeneficiarios extends Component{
             this.state.sexo ===undefined ||
             this.state.curp ===undefined ||
             this.state.tel ===undefined ||
-            this.state.email ===undefined){ 
+            this.state.email ===undefined ||
+            this.state.curso ===undefined){ 
             err.push("Ingresa todos los datos solicitados"); 
         }else{
-            if(this.state.curp.length !==18){
+            if(this.state.curp.length !==18)
                 err.push("Verifica tu CURP");
-            }
-            if(this.state.tel.length !==10){
+            
+            if(this.state.tel.length !==10)
                 err.push("Verifica tu numero de telefono");
-            }
-            if(edad < 18 || edad>29){
+            
+            if(edad < 18 || edad>29)
                 err.push("Verifica tu edad");
-            }
+            
         }
         
         if(err.length !==0){
             this.setState({
                 errors: err,
                 showAlert: true
-            })
+            });
         }else{ 
             this.props.addBene(
                 this.state.nombre,
@@ -75,7 +76,8 @@ class RegistroBeneficiarios extends Component{
                 this.state.sexo,
                 this.state.curp,
                 this.state.tel,
-                this.state.email);
+                this.state.email,
+                this.state.curso);
         }   
     }
 
@@ -95,7 +97,7 @@ class RegistroBeneficiarios extends Component{
         }
     }
     _renderItem = () =>{
-        return this.props.stateCursos.map((row,index)=>{
+        return this.props.stateCursos.map((row)=>{
             return(
                 <option>{row.nombrecurso} </option>
             );
@@ -240,9 +242,9 @@ class RegistroBeneficiarios extends Component{
                                     </div>
                                 </div>
                                 <div className="col-12 col-lg-6 mb-3">
-                                    <label htmlFor="sexo">Seleciona el Curso o Taller: </label>
+                                    <label htmlFor="curso">Seleciona el Curso o Taller: </label>
                                     
-                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="curso" name="curso" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona </option>
                                         {this._renderItem()}
                                         </select>
@@ -274,7 +276,7 @@ const mapStateToProps =({responseNewBene,stateCursos}) => {
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email)),
+        addBene: (nombre,app,apm,date,edad,sexo,curp,tel,email,curso)=> dispatch(NEW_BENE_ACTION(nombre,app,apm,date,edad,sexo,curp,tel,email,curso)),
         getCursos: ()=>dispatch(GET_CURSOS_ACTION())
     };
 };

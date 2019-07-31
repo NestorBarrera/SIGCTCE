@@ -222,7 +222,6 @@ class RegistroBeneficiarios2 extends Component{
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    
                                 </div>
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="curso">Seleciona el Curso o Taller: </label>

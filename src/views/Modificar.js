@@ -45,20 +45,20 @@ class Modificar extends Component{
             this.state.area ===undefined ||
             this.state.level ===undefined ||
             this.state.active ===undefined){
-            err.push("Ingresa todos los datos solicitados");
+            err.push("Ingresa todos los datos solicitados")
 
         }else{
-            if(this.state.tel.length !==10){
+            if(this.state.tel.length !==10)
                 err.push("Verifica tu numero de telefono");
-            }
+            
     
-            if(this.state.password.length !==8){
+            if(this.state.password.length !==8)
                 err.push("Contraseña minimo de 8 caracteres");
-            }
+            
     
-            if(edad < 18 || edad>29){
+            if(edad < 18 || edad > 29)
                 err.push("Verifica tu edad");
-            }
+            
         }
         
 
@@ -66,7 +66,7 @@ class Modificar extends Component{
             this.setState({
                 errors: err,
                 showAlert: true
-            })
+            });
         }else { 
             this.props.addUsers(
                 this.state.name,
@@ -125,9 +125,7 @@ class Modificar extends Component{
                                         placeholder="Tu nombre aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu nombre
-                                    </div>
+                                
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -138,9 +136,7 @@ class Modificar extends Component{
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -151,9 +147,7 @@ class Modificar extends Component{
                                         placeholder="Tu apellido aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu apellido
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -163,10 +157,10 @@ class Modificar extends Component{
                                         id="edad" name="edad" required
                                         placeholder="Tu edad aqui ..."
                                         onChange={this.handleInputChange}
+                                        max="29"
+                                        min="18"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu edad
-                                    </div>
+                                   
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -176,7 +170,7 @@ class Modificar extends Component{
                                         <option value="Masculino">H</option>
                                         <option value="Femenino">M</option>
                                         </select>
-                                        <div className="invalid-feedback">Selecciona tu sexo</div>
+                                        
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -189,9 +183,7 @@ class Modificar extends Component{
                                         max="10"
                                         min="10"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu telefono
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -202,9 +194,7 @@ class Modificar extends Component{
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback" id="msj1">
-                                        Por favor ingresa tu email
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
@@ -216,14 +206,12 @@ class Modificar extends Component{
                                         onChange={this.handleInputChange}
                                         min="8"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu contraseña
-                                    </div>
+                                    
                                 </div>
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="area">Area: </label>
-                                        <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
                                         <option value="Salud Juvenil">Salud Juvenil</option>
                                         <option value="Poder Joven">Poder Joven</option>
@@ -234,7 +222,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="level">Nivel: </label>
-                                        <select className="custom-select" id="level" ref="level" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="level" name="level" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un nivel</option>
                                         <option value="Administrador">Administrador</option>
                                         <option value="Coordinador">Coordinador</option>
@@ -244,7 +232,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="active">Activo: </label>
-                                        <select className="custom-select" id="active" ref="active" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="active" name="active" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona un estatus</option>
                                         <option value={true}>SI</option>
                                         <option value={false}>NO</option>

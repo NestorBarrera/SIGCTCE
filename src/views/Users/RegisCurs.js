@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {NEW_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
 
-class RegistroCursos extends Component{
+class RegisCurs extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,7 @@ class RegistroCursos extends Component{
         const NewProps = nextProps;
 
         if(NewProps.responseNewCursos.success === "OK"){
-            window.location.href = "/principal";
+            window.location.href = "/PrincipalUser";
         }
     }
     
@@ -152,7 +152,7 @@ class RegistroCursos extends Component{
                                         onChange={this.handleInputChange}
                                     />
                                     <div className="invalid-feedback">
-                                        Por favor ingresar su reseña
+                                        Por favor ingresa tu nombre
                                     </div>
                                 </div>
 
@@ -236,7 +236,7 @@ class RegistroCursos extends Component{
                                 </div>
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{
-                                            window.location.href="Principal"
+                                            window.location.href="PrincipalUser"
                                         }}>Cancelar</button>
                                         <button  className="btn btn-success" onClick={this.handleSubmit.bind(this)}> 
                                         Guardar
@@ -263,5 +263,5 @@ const mapDispatchToProps=(dispatch)=>{
     };
 };
 
-const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(RegistroCursos);
+const ConnectCursos= connect(mapStateToProps,mapDispatchToProps)(RegisCurs);
 export default ConnectCursos;

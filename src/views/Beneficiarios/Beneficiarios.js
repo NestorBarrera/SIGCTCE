@@ -50,8 +50,8 @@ class Beneficiarios extends Component {
 <div className="container" style={{marginTop:30}}>
     <div className="row justify-content-center" > 
          <div className="btn-group" role="group">
-            <a href="Principal" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
-            <a href="User" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
+            <a href="Principal" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
+            <a href="User" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
         </div>  
     </div>
     <div  style={{textAlign:"right"}}>
