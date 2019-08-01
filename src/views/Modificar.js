@@ -34,6 +34,7 @@ class Modificar extends Component{
     handleSubmit() {
         let err = [];
         let edad = parseInt(this.state.edad);
+        console.log(this.state);
         if(this.state.name ===undefined || 
             this.state.app ===undefined ||
             this.state.apm ===undefined ||
@@ -165,7 +166,7 @@ class Modificar extends Component{
 
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="sexo">Sexo: </label>
-                                        <select className="custom-select" id="sexo" ref="sexo" onChange={this.handleInputChange} required>
+                                        <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
                                         <option value="Masculino">H</option>
                                         <option value="Femenino">M</option>

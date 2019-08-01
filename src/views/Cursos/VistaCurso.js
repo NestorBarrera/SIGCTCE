@@ -24,50 +24,43 @@ class VistaCurso extends Component{
     _renderItem = () =>{
         let {nombrecurso,descri,ponente,sexo,time,datein,datefi,capacity}=this.props.stateCurso;
             return(
-        <section className="container">
-            <div className="responsive">
-                <div className="mb-3" style={{maxWidth: '800px'}}>
-                    <div className="row no-gutters">
+                <div className="col-12 col-md-8">
+                    <div className="row justify-content-center">
                         <div className="col-md-4">
                             <img src="../image/card.jpg" className="card-img" height='300px' width='600px'/>
                         </div>
 
                         <div className="col-md-8">
-                            <div className="card-body">
-                            <h1 className="card-title"> {nombrecurso || ""}</h1>
-                            <p><strong>Descripcion:</strong> {descri || ""} </p>
-                            <p><strong>Ponente:</strong>{ponente || ""} </p>
-                            <p><strong>Reseña del Ponente:</strong>{sexo || ""} </p>
-                            <p><strong>Horario:</strong>{time || ""} </p>
-                            <p className="card-text"><strong>Fecha de inicio:</strong>{datein || ""}</p>
-                            <p className="card-text"><strong>Horario de inicio:</strong> {datefi || ""}</p>
-                            <p className="card-text"><strong>Capacidad de personas:</strong> {capacity || ""}</p>
-                        <div className="btn-group " role="group" >
-                        <button type="button" className="btn btn-primary" onClick={()=>{
-                                window.location.href="Cursos"
-                            }} ><center> Regresar</center></button>
+                            <div className="card-body" style={{textAlign:"center"}}>
+                                <h1 className="card-title"> {nombrecurso || ""}</h1>
+                                <p><strong>Descripcion:</strong> {descri || ""} </p>
+                                <p><strong>Ponente:</strong>{ponente || ""} </p>
+                                <p><strong>Reseña del Ponente:</strong>{sexo || ""} </p>
+                                <p><strong>Horario:</strong>{time || ""} </p>
+                                <p className="card-text"><strong>Fecha de inicio:</strong>{datein || ""}</p>
+                                <p className="card-text"><strong>Horario de inicio:</strong> {datefi || ""}</p>
+                                <p className="card-text"><strong>Capacidad de personas:</strong> {capacity || ""}</p>
+                                <div className="btn-group " role="group" style={{marginTop: "10px"}}>
+                                    <button type="button" className="btn btn-primary" onClick={()=>{
+                                            window.location.href="Cursos"
+                                        }} ><center> Regresar</center></button>
 
-                            <button type="button" className="btn btn-success" onClick={()=>{
-                                window.location.href="RegistroBeneficiarios2"
-                            }} ><center> Inscribirse</center></button>
-                             </div>
+                                    <button type="button" className="btn btn-success" onClick={()=>{
+                                        window.location.href="RegistroBeneficiarios2"
+                                    }} ><center> Inscribirse</center></button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> 
-            </div>
-        </section>
+                </div>
             );
     }
     render(){
         return(
-            <section className="container">
-                <div style={{marginTop: '15px'}}>
-                    <div className="row justify-content-center" >
-                        {this._renderItem()}
-                    </div>
+            <section className="container" style={{marginTop: '15px'}}>
+                <div className="row justify-content-center" >
+                    {this._renderItem()}
                 </div>
-                
             </section>  
         );
     }

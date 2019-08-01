@@ -15,23 +15,18 @@ const GET_CURSO_ACTION = (id) =>{
     };
 }
 
-const NEW_CURSOS_ACTION =(nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity) =>{
+const NEW_CURSOS_ACTION =(datos) =>{
     return{
         type: "NEW_CURSOS",
-        payload: axios({
-            method: 'post',
-            url: BASE_URL + '/Cursos/signup',
-            data:{
-                nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity
-            },
-            config: {
-                headers:{
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
+        payload: axios.post(BASE_URL + '/Cursos/signup', datos,{
+            headers:{
+                'accept': 'application/json',
+                'Content-Type': `multipart/form-data; boundary=${datos._boundary}`
             }
         })
     };
 }
+
 const UPDATE_CURSOS_ACTION =(id,nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity) =>{
     return{
         type: "UPDATE_CURSOS",

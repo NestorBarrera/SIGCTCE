@@ -21,11 +21,25 @@ class RegistroCursos extends Component{
     }
     
     handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        let target = event.target;
+
+        let value = null;
+        let name = target.name;
+
+        switch(target.name){
+            case "checkbox":
+                value =target.checked;
+                break;
+
+                case "file":
+                    value= target.files[0];
+                    break;
+            default:
+                value= target.value;
+                break;
+        }
         this.setState({
-          [name]: value
+            [name]: value
         });
     }
 
@@ -56,17 +70,19 @@ class RegistroCursos extends Component{
                     showAlert: true
                 })
             }else{ 
-                this.props.addCursos(
-                    this.state.nombrecurso,
-                    this.state.descri,
-                    this.state.ponente,
-                    this.state.resena,
-                    this.state.time,
-                    this.state.datein,
-                    this.state.datefi,
-                    this.state.area,
-                    this.state.tipo,
-                    this.state.capacity);
+                let data = new FormData();
+                    data.append('nombrecurso',this.state.nombrecurso);
+                    data.append('descri',this.state.descri);
+                    data.append('ponente',this.state.ponente);
+                    data.append('resena',this.state.resena);
+                    data.append('time',this.state.time);
+                    data.append('datein',this.state.datein);
+                    data.append('datefi',this.state.datefi);
+                    data.append('area',this.state.area);
+                    data.append('tipo',this.state.tipo);
+                    data.append('capacity',this.state.capacity);
+                    data.append('img',this.state.img);
+                    this.props.addCursos(data);
             }
     }
 
@@ -202,9 +218,16 @@ class RegistroCursos extends Component{
                                     
                                         <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
-                                        <option value="Salud Juvenil">Salud Juvenil</option>
-                                        <option value="Poder Joven">Poder Joven</option>
-                                        <option value="Emprendedores">Emprendedores</option>
+                                        <option value="Salud Juvenil">Salud Juvenil Realizada</option>
+                                        <option value="Jovenes Emprendedores">Jovenes Emprendedores del Estado Beneficiados</option>
+                                        <option value="Vinculacion">Vinculación de Jóvenes con Instituciónes Públicas y Privadas Concertadas</option>
+                                        <option value="Espacios de Expresión">Espacios de Expresión Artística para la Juventud Aperturados</option>
+                                        <option value="Participación Juvenil">Participación Juvenil en Organizaciones Beneficiada</option>
+                                        <option value="Servicios de Consulta">Servicios de Consulta en Centros Poder Joven Otorgados</option>
+                                        <option value="Programas Televisivos">Programas Televisivos de Expreción Elaborados</option>
+                                        <option value="Programas Poder Joven Producidos">Programas Poder Joven Producidos</option>
+                                        <option value="Espacios Informativos">Espacios Informativos de Apoyos Gubernamentales para Jóvenes Aperturados</option>
+                                        <option value="Jóvenes Emprendedores">Jóvenes Emprendedores en la Casa del Emprendedor Poder Joven Hidalgo Atendidos</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un area</div> 
                                 </div>
@@ -230,10 +253,13 @@ class RegistroCursos extends Component{
                                         max="33"
                                         min="15"
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa la capacidad de personas
-                                    </div>
                                 </div>
+
+                                <div className="col-12 mb-3">
+                                    <input name="img" type="file" onChange={this.handleInputChange}/>
+                                    <input type="hidden" name="MAX_FILE_SIZE" defaultValue="3000000"/>
+                                </div>
+
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{
                                             window.location.href="Principal"
@@ -259,7 +285,7 @@ const mapStateToProps =({responseNewCursos}) => {
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        addCursos: (nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity)=> dispatch(NEW_CURSOS_ACTION(nombrecurso,descri,ponente,resena,time,datein,datefi,area,tipo,capacity))
+        addCursos: (datos)  => dispatch(NEW_CURSOS_ACTION(datos))
     };
 };
 
