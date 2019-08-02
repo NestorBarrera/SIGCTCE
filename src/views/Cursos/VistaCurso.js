@@ -22,15 +22,15 @@ class VistaCurso extends Component{
     }
 
     _renderItem = () =>{
-        let {nombrecurso,descri,ponente,sexo,time,datein,datefi,capacity}=this.props.stateCurso;
+        let {_id,nombrecurso,descri,ponente,sexo,time,datein,datefi,capacity}=this.props.stateCurso;
             return(
-                <div className="col-12 col-md-8">
+                <div className="col-12 col-md-9">
                     <div className="row justify-content-center">
-                        <div className="col-md-4">
-                            <img src="../image/card.jpg" className="card-img" height='300px' width='600px'/>
+                        <div className="col-md-5">
+                            <img src={"http://localhost:8110/image/cursos/"+_id+"-curso.png"} className="card-img" height='300px' width='600px'/>
                         </div>
 
-                        <div className="col-md-8">
+                        <div className="col-md-7">
                             <div className="card-body" style={{textAlign:"center"}}>
                                 <h1 className="card-title"> {nombrecurso || ""}</h1>
                                 <p><strong>Descripcion:</strong> {descri || ""} </p>

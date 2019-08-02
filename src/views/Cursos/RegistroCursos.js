@@ -26,7 +26,7 @@ class RegistroCursos extends Component{
         let value = null;
         let name = target.name;
 
-        switch(target.name){
+        switch(target.type){
             case "checkbox":
                 value =target.checked;
                 break;

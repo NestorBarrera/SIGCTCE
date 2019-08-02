@@ -24,7 +24,7 @@ class Principal extends Component {
                     <td> {row.area} </td>
                     <td> {row.capacity} </td>
                     <td>
-                    <button className="btn btn-warning icon-pencil" onClick={()=>{
+                    <button className="btn btn-warning fas fa-user-edit" onClick={()=>{
                             let cursoId=[];
                             cursoId.push(row._id);
                             localStorage.setItem("cursoId", JSON.stringify(cursoId));
@@ -33,9 +33,17 @@ class Principal extends Component {
                     }>Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger fas fa-trash-alt" onClick={this.props.deleteCursos.bind(this,row._id)}>Eliminar</button>
                     </td>
-                     
+                    <td>
+                    <button className="btn btn-success fas fa-edit" onClick={()=>{
+                            let cursoId=[];
+                            cursoId.push(row._id);
+                            localStorage.setItem("cursoId", JSON.stringify(cursoId));
+                            window.location.href="ModificarImg";
+                        }
+                    }>Modificar</button>
+                    </td>
                 </tr>
             );
         })
@@ -51,10 +59,10 @@ class Principal extends Component {
                     </div> 
                 </div>
                 <div  style={{textAlign:"right"}}>
-                    <a href="RegistroCursos" className="btn btn-light icon-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
+                    <a href="RegistroCursos" className="btn btn-light fas fa-user-plus" role="button" style={{fontSize:"25px"}}>Agregar</a>
                 </div>
                 <hr className="red small-margin"/><br/><h1><strong>Cursos y Talleres</strong> </h1><br/><br/>
-                    
+            
                         <div className="row justify-content-center">
                             <div className="">
                                 <table className="table table-responsive-hover">
@@ -69,6 +77,7 @@ class Principal extends Component {
                                         <th scope="col">Capacidad</th>
                                         <th scope="col">Modificar</th>
                                         <th scope="col">Eliminar</th>
+                                        <th scope="col">Modificar Imagen</th>
                                         </tr>
                                     </thead>
                                     <tbody>

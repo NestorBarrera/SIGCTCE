@@ -237,9 +237,6 @@ class RegistroBeneficiarios extends Component{
                                         placeholder="Tu email aqui ..."
                                         onChange={this.handleInputChange}
                                     />
-                                    <div className="invalid-feedback">
-                                        Por favor ingresa tu email
-                                    </div>
                                 </div>
                                 <div className="col-12 col-lg-6 mb-3">
                                     <label htmlFor="curso">Seleciona el Curso o Taller: </label>

@@ -188,6 +188,7 @@ class ModificarCursos extends Component{
                                         min="15"
                                     />
                                 </div>
+                                
 
                                 <div className="btn-group w-100" role="group" >
                                         <button  className="btn btn-primary" onClick={()=>{

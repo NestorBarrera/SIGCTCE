@@ -11,7 +11,7 @@ class Cursos extends Component{
         return this.props.stateCursos.map((row,index)=>{
             return(
                 <div className="col-12 col-md-4">
-                     <img src="../image/curso.jpg" class="card-img-top" height="200px"/>
+                     <img src={"http://localhost:8110/image/cursos/"+row._id+"-curso.png"} className="card-img-top" height="200px"/>
                     <div key={index} className="card" >
                         <div className="card-body">
                             <h3 className="card-title">{row.nombrecurso}</h3>
