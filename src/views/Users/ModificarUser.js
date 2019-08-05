@@ -188,9 +188,16 @@ class ModificarUser extends Component{
                                     <label htmlFor="area">Area: </label>
                                         <select className="custom-select" id="area" ref="area" onChange={this.handleInputChange} required>
                                         <option defaultValue={area || ""}>{area || ""}</option>
-                                        <option defaultValue="Salud Juvenil">Salud Juvenil</option>
-                                        <option defaultValue="Poder Joven">Poder Joven</option>
-                                        <option defaultValue="Emprendedores">Emprendedores</option>
+                                        <option value="Salud Juvenil">Salud Juvenil Realizada</option>
+                                        <option value="Jovenes Emprendedores">Jovenes Emprendedores del Estado Beneficiados</option>
+                                        <option value="Vinculacion">Vinculación de Jóvenes con Instituciónes Públicas y Privadas Concertadas</option>
+                                        <option value="Espacios de Expresión">Espacios de Expresión Artística para la Juventud Aperturados</option>
+                                        <option value="Participación Juvenil">Participación Juvenil en Organizaciones Beneficiada</option>
+                                        <option value="Servicios de Consulta">Servicios de Consulta en Centros Poder Joven Otorgados</option>
+                                        <option value="Programas Televisivos">Programas Televisivos de Expreción Elaborados</option>
+                                        <option value="Programas Poder Joven Producidos">Programas Poder Joven Producidos</option>
+                                        <option value="Espacios Informativos">Espacios Informativos de Apoyos Gubernamentales para Jóvenes Aperturados</option>
+                                        <option value="Jóvenes Emprendedores">Jóvenes Emprendedores en la Casa del Emprendedor Poder Joven Hidalgo Atendidos</option>
                                         </select>
                                 </div>
 

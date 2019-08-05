@@ -168,8 +168,8 @@ class Modificar extends Component{
                                     <label htmlFor="sexo">Sexo: </label>
                                         <select className="custom-select" id="sexo" name="sexo" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona tu sexo</option>
-                                        <option value="Masculino">H</option>
-                                        <option value="Femenino">M</option>
+                                        <option value="H">Masculino</option>
+                                        <option value="M">Femenino</option>
                                         </select>
                                         
                                 </div>
@@ -214,9 +214,16 @@ class Modificar extends Component{
                                     <label htmlFor="area">Area: </label>
                                         <select className="custom-select" id="area" name="area" onChange={this.handleInputChange} required>
                                         <option value="">Selecciona una area</option>
-                                        <option value="Salud Juvenil">Salud Juvenil</option>
-                                        <option value="Poder Joven">Poder Joven</option>
-                                        <option value="Emprendedores">Emprendedores</option>
+                                        <option value="Salud Juvenil">Salud Juvenil Realizada</option>
+                                        <option value="Jovenes Emprendedores">Jovenes Emprendedores del Estado Beneficiados</option>
+                                        <option value="Vinculacion">Vinculación de Jóvenes con Instituciónes Públicas y Privadas Concertadas</option>
+                                        <option value="Espacios de Expresión">Espacios de Expresión Artística para la Juventud Aperturados</option>
+                                        <option value="Participación Juvenil">Participación Juvenil en Organizaciones Beneficiada</option>
+                                        <option value="Servicios de Consulta">Servicios de Consulta en Centros Poder Joven Otorgados</option>
+                                        <option value="Programas Televisivos">Programas Televisivos de Expreción Elaborados</option>
+                                        <option value="Programas Poder Joven Producidos">Programas Poder Joven Producidos</option>
+                                        <option value="Espacios Informativos">Espacios Informativos de Apoyos Gubernamentales para Jóvenes Aperturados</option>
+                                        <option value="Jóvenes Emprendedores">Jóvenes Emprendedores en la Casa del Emprendedor Poder Joven Hidalgo Atendidos</option>
                                         </select>
                                         <div className="invalid-feedback">Selecciona un area</div>
                                 </div>

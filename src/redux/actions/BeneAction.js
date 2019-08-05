@@ -16,14 +16,14 @@ const GET_BENES_ACTION = () =>{
     };
 }
 
-const NEW_BENE_ACTION =(nombre,app,apm,date,edad,sexo,curp,tel,email,curso) =>{
+const NEW_BENE_ACTION =(nombre,app,apm,fechaNac,edad,sexo,curp,telefono,email,entidad,municipio,cp,colonia,calle,numExt,curso) =>{
     return{
         type: "NEW_BENE",
         payload: axios({
             method: 'post',
             url: BASE_URL + '/beneficiario/signup',
             data:{
-                nombre,app,apm,date,edad,sexo,curp,tel,email,curso
+                nombre,app,apm,fechaNac,edad,sexo,curp,telefono,email,entidad,municipio,cp,colonia,calle,numExt,curso
             },
             config: {
                 headers:{
@@ -33,14 +33,14 @@ const NEW_BENE_ACTION =(nombre,app,apm,date,edad,sexo,curp,tel,email,curso) =>{
         })
     };
 }
-const UPDATE_BENE_ACTION =(id,nombre,app,apm,date,edad,sexo,curp,tel,email,curso) =>{
+const UPDATE_BENE_ACTION =(id,nombre,app,apm,fechaNac,edad,sexo,curp,telefono,email,entidad,municipio,cp,colonia,calle,numExt,curso) =>{
     return{
         type: "UPDATE_BENE",
         payload: axios({
             method: 'put',
             url: BASE_URL + '/beneficiario/edit/'+id,
             data:{
-                nombre,app,apm,date,edad,sexo,curp,tel,email,curso
+                nombre,app,apm,fechaNac,edad,sexo,curp,telefono,email,entidad,municipio,cp,colonia,calle,numExt,curso
             },
             config: {
                 headers:{

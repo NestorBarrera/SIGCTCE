@@ -18,7 +18,6 @@ import PrincipalUser from './views/Users/PrincipalUser';
 import MostrarBene from './views/Users/MostrarBene';
 import RegisCurs from './views/Users/RegisCurs';
 import ModificarImg from './views/Cursos/ModificarImg';
-
 class Router extends Component{
     render(){
         return(

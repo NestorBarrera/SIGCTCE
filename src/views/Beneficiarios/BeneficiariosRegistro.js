@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {municipios, hidalgo} from '../components/data/data';
-import {entidades} from '../components/data/estados';
-import { NEW_BENEFICIARIO_ACTION } from '../redux/actions/BeneficiariosAction';
-import {GET_ACTIVIDADES_ACTION} from '../redux/actions/ActividadAction';
+import {municipios, hidalgo} from '../data../components/data/data';
+import {entidades} from '../../components/data/estados';
+import { NEW_BENE_ACTION } from '../../redux/actions/BeneAction';
 import { connect } from 'react-redux';
 
 class BeneficiariosRegistro extends Component{
@@ -46,9 +45,7 @@ class BeneficiariosRegistro extends Component{
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    componentDidMount(){
-        this.props.getActividades();
-    }
+ 
 
     componentWillReceiveProps(nextProps){
         //const ActualProps = this.props;
@@ -385,8 +382,7 @@ const mapStateToProps = ({responseNewBeneficiario, stateActividades}) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return{
-        sendBeneficiario: (nombre,app,apm,edad,sexo,telefono,email,curp,entidad,fechaNac,municipio,cp,colonia,calle,numExt,actividad) => dispatch(NEW_BENEFICIARIO_ACTION(nombre,app,apm,edad,sexo,telefono,email,curp,entidad,fechaNac,municipio,cp,colonia,calle,numExt,actividad)),
-        getActividades: ()=> dispatch(GET_ACTIVIDADES_ACTION())
+        sendBeneficiario: (nombre,app,apm,edad,sexo,telefono,email,curp,entidad,fechaNac,municipio,cp,colonia,calle,numExt,actividad) => dispatch(NEW_BENE_ACTION(nombre,app,apm,edad,sexo,telefono,email,curp,entidad,fechaNac,municipio,cp,colonia,calle,numExt,actividad))
     }
 }
  const ConnectBeneficiarios = connect(mapStateToProps, mapDispatchToProps)(BeneficiariosRegistro);

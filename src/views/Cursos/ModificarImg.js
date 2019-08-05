@@ -85,7 +85,7 @@ class ModificarImg extends Component{
                                 {this._renderAlert()}
 
                                 <div className="col-12 mb-3">
-                                <label htmlFor="img"><strong> Selecciona la Imagen:</strong></label><br/>
+                                <label htmlFor="img"><strong> Selecciona la  Nueva Imagen:</strong></label><br/>
                                     <input name="img" type="file" onChange={this.handleInputChange}/>
                                     <input type="hidden" name="MAX_FILE_SIZE" defaultValue="3000000"/>
                                 </div>
