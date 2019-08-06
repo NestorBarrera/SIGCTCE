@@ -55,9 +55,9 @@ class User extends Component {
                 <hr className="red small-margin"/><br/><h1><strong>Usuarios</strong> </h1><br/><br/>
 
            
-                <div className="row justify-content-start">
-                    <div className="col-12 col-md-7">
-                        <table className="table table-responsive-hover">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-12">
+                        <table className="table table-responsive table-hover">
                             <thead  className="thead-dark">
                                 <tr>
                                 <th scope="col">Nombre</th>

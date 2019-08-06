@@ -21,10 +21,10 @@ class Beneficiarios extends Component {
                 <tr key={index}>
                     <td>{row.nombre}</td>
                     <td>{row.app} {row.apm}</td>
-                    <td>{row.date}</td>
+                    <td>{row.fechaNac}</td>
                     <td>{row.edad}</td>
                     <td> {row.curp} </td>
-                    <td> {row.tel} </td>
+                    <td> {row.telefono} </td>
                     <td> {row.email} </td>
                     <td>
                     <button className="btn btn-warning icon-pencil" onClick={()=>{
@@ -50,7 +50,7 @@ class Beneficiarios extends Component {
 <div className="container" style={{marginTop:30}}>
     <div className="row justify-content-center" > 
          <div className="btn-group" role="group">
-            <a href="Principal" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Curos y Talleres</a>
+            <a href="Principal" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cursos y Talleres</a>
             <a href="User" className="btn btn-primary btn-lg active" role="button" aria-pressed="true">Usuarios</a>
         </div>  
     </div>
@@ -60,9 +60,9 @@ class Beneficiarios extends Component {
 
                 <hr className="red small-margin"/><br/><h1><strong>Beneficiarios</strong> </h1><br/><br/>
 
-            <div className="row justify-content-start">
-                <div className="col-12 col-md-7">
-                <table className="table table-responsive-hover">
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-12">
+                <table className="table table-hover">
                 <thead  className="thead-dark">
                     <tr>
                     <th scope="col">Nombre</th>

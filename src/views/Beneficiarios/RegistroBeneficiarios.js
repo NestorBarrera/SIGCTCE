@@ -30,7 +30,7 @@ class RegistroBeneficiarios extends Component{
         }
     }
     _validatecurp = () => {
-        const consonantes = ["B","C","D","F","G","H","J","K","L","M","N","P","Q","R","S","T","V","W","X","Y","Z"];
+        const consonantes = ["B","C","D","F","G","H","J","K","L","M","N","Ñ","P","Q","R","S","T","V","W","X","Y","Z"];
         const vocales = ["A","E","I","O","U"];
 
         if(this.state.fechaNac  !== undefined &&
@@ -51,13 +51,25 @@ class RegistroBeneficiarios extends Component{
                 let pp = "", pm = "", nom = "", pp2 = "", pm2 = "", nom2 = "",  contadorConsonantes = 0;
 
                 pp = app.charAt(0);
-
-                for(let i=0;i<app.length;i++){
-                    let c = app.charAt(i);
-                    if(!vocalSeleccionada){
-                        if(vocales.includes(c)){
-                            pp += c;
-                            vocalSeleccionada = true;
+                if(vocales.includes(app.charAt(0))){
+                    for(let i=1;i<app.length;i++){
+                        let c = app.charAt(i);
+                        if(!vocalSeleccionada){
+                            if(vocales.includes(c)){
+                                pp += c;
+                                vocalSeleccionada = true;
+                            }
+                        }
+                    }
+                } else{
+                    for(let i=0;i<app.length;i++){
+                        let c = app.charAt(i);
+                        if(!vocalSeleccionada){
+                            if(vocales.includes(c)){
+                                pp += c;
+                                vocalSeleccionada = true;
+                                break;
+                            } 
                         }
                     }
                 }
@@ -65,61 +77,73 @@ class RegistroBeneficiarios extends Component{
                 pm = apm.charAt(0);
                 nom = nombre.charAt(0);
 
-                /* for(let i=0;i<apm.length;i++){
-                    let c = apm.charAt(i);
-                    if(!consonanteSeleccionada){
-                        if(consonantes.includes(c)){
-                            pm = c;
-                            consonanteSeleccionada = true;
-                        } 
-                    }
-                } */
-
                 consonanteSeleccionada = false;
+                vocalSeleccionada = false;
 
-                for(let i=0;i<app.length;i++){
-                    let c = app.charAt(i);
-                    if(!consonanteSeleccionada){
-                        if(consonantes.includes(c)){
-                            if(contadorConsonantes === 1){
-                                pp2 = c;
-                                consonanteSeleccionada = true;
-                                break;
-                            } else {
-                                contadorConsonantes++;
-                            }
-                        } 
+                if(vocales.includes(app.charAt(0))){
+                    for(let i=1;i<app.length;i++){
+                        let c = app.charAt(i);
+                        if(!consonanteSeleccionada){
+                            if(consonantes.includes(c)){
+                                if(c === "Ñ"){
+                                    pp2 = "X";
+                                    consonanteSeleccionada = true;
+                                } else {
+                                    pp2 = c;
+                                    consonanteSeleccionada = true;
+                                }
+                            } 
+                        }
                     }
-                }
-
-                consonanteSeleccionada = false;
-                contadorConsonantes = 0;
-
-                for(let i=0;i<apm.length;i++){
-                    let c = apm.charAt(i);
-                    if(!consonanteSeleccionada){
-                        if(consonantes.includes(c)){
-                            if(contadorConsonantes === 1){
-                                pm2 = c;
-                                consonanteSeleccionada = true;
-                                break;
-                            } else {
-                                contadorConsonantes++;
-                            }
-                        } 
+                }else{
+                    for(let i=1;i<app.length;i++){
+                        let c = app.charAt(i);
+                        if(!consonanteSeleccionada){
+                            if(consonantes.includes(c)){
+                                if(c === "Ñ"){
+                                    pp2 = "X";
+                                    consonanteSeleccionada = true;
+                                } else {
+                                    pp2 = c;
+                                    consonanteSeleccionada = true;
+                                }
+                            } 
+                        }
                     }
                 }
 
                 consonanteSeleccionada = false;
-                contadorConsonantes = 0;
 
-                for(let i=0;i<nombre.length;i++){
-                    let c = nombre.charAt(i);
-                    if(!consonanteSeleccionada){
-                        if(consonantes.includes(c)){
-                            nom2 = c;
-                            consonanteSeleccionada = true;        
-                        } 
+               
+                if(vocales.includes(nombre.charAt(0))){
+                    for(let i=1;i<nombre.length;i++){
+                        let c = nombre.charAt(i);
+                        if(!consonanteSeleccionada){
+                            if(consonantes.includes(c)){
+                                if(c === "Ñ"){
+                                    nom2 = "X";
+                                    consonanteSeleccionada = true;
+                                } else {
+                                    nom2 = c;
+                                    consonanteSeleccionada = true;
+                                }
+                            }
+                        }
+                    }
+                } else{
+                    for(let i=1;i<nombre.length;i++){
+                        let c = nombre.charAt(i);
+                        if(!consonanteSeleccionada){
+                            if(consonantes.includes(c)){
+                                if(c === "Ñ"){
+                                    nom2 = "X";
+                                    consonanteSeleccionada = true;
+                                } else {
+                                    nom2 = c;
+                                    consonanteSeleccionada = true;
+                                } 
+                            } 
+                        }
                     }
                 }
 
@@ -193,9 +217,6 @@ class RegistroBeneficiarios extends Component{
             
             if(edad < 18 || edad>29)
                 err.push("Verifica tu edad");
-            
-        /*    if(this.state.numExt.length < 1 || this.state.numExt.length > 4)
-                err.push("Ingresa un número exterior valido") */
         }
         
         if(err.length !==0){
