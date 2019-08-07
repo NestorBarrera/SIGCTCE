@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {NEW_BENE_ACTION} from '../../redux/actions/BeneAction';
 import {GET_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
-
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 class RegistroBeneficiarios2 extends Component{
     componentDidMount(){
@@ -83,17 +84,17 @@ class RegistroBeneficiarios2 extends Component{
 
     _renderAlert = () =>{
         if(this.state.showAlert){
-            return this.state.errors.map((error,index)=>{
-                return(
-                    <div className="col-12" key={index}>
-                        <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                            <p className="w-100 mb-0">{error}</p>
-                        </div>
-                    </div>
-                );
-            })
-        }else{
-            return null;
+            const MySwal = withReactContent(Swal);
+
+            MySwal.fire({
+                type: 'error',
+                title: 'Por favor',
+                text: "Llena todos los campos por favor"
+            });
+
+            this.setState({
+                showAlert: false
+            });
         }
     }
     _renderItem = () =>{

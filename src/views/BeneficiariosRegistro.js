@@ -4,28 +4,26 @@ import {entidades} from '../components/data/estados';
 import { NEW_BENEFICIARIO_ACTION } from '../redux/actions/BeneficiariosAction';
 import {GET_ACTIVIDADES_ACTION} from '../redux/actions/ActividadAction';
 import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+
 
 class BeneficiariosRegistro extends Component{
     _renderAlert =() => {
         if(this.state.showAlert){
-           return this.state.errors.map((error,index) =>{
-            return(
+            const MySwal = withReactContent(Swal);
 
-                <div className="col-12" key={index}>
-                    <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                        <p className="w-100 mb-0">{error}</p>
-                    </div>
-                </div>
+            MySwal.fire({
+                type: 'error',
+                title: 'Por favor',
+                text: "Llena todos los campos por favor"
+            });
 
-              /* <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                   <strong>Atención </strong> Ingresa todos los datos solicitados
-   
-               </div> */
-            );
-        }) 
-        }else {
-            return null;
-        }   
+            this.setState({
+                showAlert: false
+            });
+        }
     }
     _renderItem = () => {
           return this.props.stateActividades.map((row,index) =>{

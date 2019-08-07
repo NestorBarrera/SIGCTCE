@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {GET_CURSO_ACTION,UPDATE_CURSOS_ACTION} from '../../redux/actions/CursosAction';
 import {connect} from 'react-redux';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 class ModificarCursos extends Component{
     constructor(props) {
@@ -55,13 +57,17 @@ class ModificarCursos extends Component{
 
     _renderAlert = () =>{
         if(this.state.showAlert){
-            return(
-                <div className="alert alert-danger alert-dismissible fade show" role="alert"> 
-                    <strong>¡Atención!</strong> Favor de Ingresar todos los datos
-                 </div>
-            );
-        }else{
-            return null;
+            const MySwal = withReactContent(Swal);
+
+            MySwal.fire({
+                type: 'error',
+                title: 'Por favor',
+                text: "Llena todos los campos por favor"
+            });
+
+            this.setState({
+                showAlert: false
+            });
         }
     }
 

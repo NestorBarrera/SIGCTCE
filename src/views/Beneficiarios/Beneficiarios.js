@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import {GET_BENES_ACTION, DELETE_BENE_ACTION} from '../../redux/actions/BeneAction';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 
 class Beneficiarios extends Component {
@@ -14,6 +16,8 @@ class Beneficiarios extends Component {
             this.props.getBenes();
         }
     }
+
+    
 
     _renderItem = () =>{
         return this.props.stateBenes.map((row,index)=>{
@@ -36,7 +40,8 @@ class Beneficiarios extends Component {
                     }>Modificar</button>
                     </td>
                     <td>
-                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}>Eliminar</button>
+                    <button className="btn btn-danger icon-bin" onClick={this.props.deleteBene.bind(this,row._id)}
+                    >Eliminar</button>
                     </td>
                      
                 </tr>

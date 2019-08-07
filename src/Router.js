@@ -29,7 +29,6 @@ class Router extends Component{
                 <Route path="/beneficiarios" component={Beneficiarios}/>
                 <Route path="/user" component={User}/>
                 <Route path="/principal" component={Principal}/>
-                <Route path="/registro" component={Registro}/>
                 <Route path="/modificar" component={Modificar}/>
                 <Route path="/modificaruser" component={ModificarUser}/>
                 <Route path="/modificarbene" component={ModificarBene}/>
